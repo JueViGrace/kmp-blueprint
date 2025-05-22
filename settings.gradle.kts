@@ -32,3 +32,14 @@ include(
     ":apps:sampleApp1",
     ":apps:sampleApp2",
 )
+
+// core library
+include(
+    ":core:api",
+    ":core:database",
+    ":core:resources",
+    ":core:shared",
+    ":core:types",
+    ":core:ui",
+    ":core:util",
+)

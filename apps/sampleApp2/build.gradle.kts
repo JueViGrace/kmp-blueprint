@@ -15,7 +15,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_21)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -26,7 +26,7 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         androidMain.dependencies {
             // Android
@@ -46,9 +46,18 @@ kotlin {
             // Koin
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
-            implementation(libs.koin.androidx.compose.navigation)
         }
         commonMain.dependencies {
+            /* Projects */
+
+            // Resources
+            implementation(projects.core.resources)
+
+            // UI
+            implementation(projects.core.ui)
+
+            /* Dependencies */
+
             // Compose
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -63,13 +72,6 @@ kotlin {
             // Koin
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
-            implementation(libs.koin.compose.viewmodel.navigation)
-
-            // Lifecycle
-            implementation(libs.lifecycle.viewmodel)
-            implementation(libs.lifecycle.viewmodel.savedstate)
-            implementation(libs.lifecycle.runtime.compose)
 
             // Navigation
             implementation(libs.navigation.compose)
@@ -92,6 +94,7 @@ android {
         versionName = libs.versions.sampleApp2VersionName.get()
     }
     packaging {
+        resources.excludes += "DebugProbesKt.bin"
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
@@ -129,7 +132,10 @@ android {
     }
 }
 
+compose.resources {
+    generateResClass = never
+}
+
 dependencies {
     debugImplementation(compose.uiTooling)
 }
-

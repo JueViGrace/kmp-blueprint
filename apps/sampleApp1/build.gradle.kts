@@ -1,3 +1,4 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -15,7 +16,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_21)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -49,13 +50,21 @@ kotlin {
             // Koin
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
-            implementation(libs.koin.androidx.compose.navigation)
         }
         commonMain.dependencies {
+            /* Projects */
+
+            // Resources
+            implementation(projects.core.resources)
+
+            /* Dependencies */
+
             // Compose
             implementation(compose.runtime)
+            implementation(compose.animation)
             implementation(compose.foundation)
             implementation(compose.material3)
+            implementation(compose.materialIconsExtended)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
@@ -66,13 +75,6 @@ kotlin {
             // Koin
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
-            implementation(libs.koin.compose.viewmodel.navigation)
-
-            // Lifecycle
-            implementation(libs.lifecycle.viewmodel)
-            implementation(libs.lifecycle.viewmodel.savedstate)
-            implementation(libs.lifecycle.runtime.compose)
 
             // Navigation
             implementation(libs.navigation.compose)
@@ -106,6 +108,7 @@ android {
         }
     }
     packaging {
+        resources.excludes += "DebugProbesKt.bin"
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
@@ -147,3 +150,20 @@ dependencies {
     debugImplementation(compose.uiTooling)
 }
 
+compose {
+    desktop {
+        application {
+            mainClass = "com.jvg.sample1.ApplicationKt"
+
+            nativeDistributions {
+                targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+                packageName = "com.jvg.sample1"
+                packageVersion = libs.versions.sampleApp1VersionName.get()
+            }
+        }
+    }
+
+    resources {
+        generateResClass = never
+    }
+}
