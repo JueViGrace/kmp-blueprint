@@ -1,0 +1,26 @@
+findSession:
+SELECT *
+FROM s2_session
+WHERE active = 1;
+
+saveSession:
+INSERT OR REPLACE INTO s2_session(
+    id,
+    access_token,
+    refresh_token,
+    active
+) VALUES ?;
+
+updateToken:
+UPDATE s2_session SET
+    access_token = :access_token,
+    refresh_token = :refresh_token
+WHERE id = :id;
+
+updateActive:
+UPDATE s2_session SET
+    active = :active
+WHERE id = :id;
+
+deleteSession:
+DELETE FROM s2_session;

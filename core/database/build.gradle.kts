@@ -31,6 +31,13 @@ kotlin {
         }
 
         commonMain.dependencies {
+            /* Projects */
+
+            // Util
+            implementation(projects.core.util)
+
+            /* Dependencies */
+
             // Coroutines
             implementation(libs.kotlinx.coroutines.core)
 
@@ -71,11 +78,20 @@ android {
     }
 }
 
-// todo: use this as a dependency for concrete implementations of app databases
 sqldelight {
     databases {
-        create("CoreDB") {
-            packageName.set("com.jvg.blueprint.database")
+        create("Sample1DB") {
+            srcDirs.setFrom("src/commonMain/sqldelight/sample1")
+            packageName.set("com.jvg.sample1.database")
+            schemaOutputDirectory.set(file("src/commonMain/sqldelight/databases"))
+            generateAsync.set(true)
+            deriveSchemaFromMigrations.set(true)
+            verifyMigrations.set(true)
+        }
+
+        create("Sample2DB") {
+            srcDirs.setFrom("src/commonMain/sqldelight/sample2")
+            packageName.set("com.jvg.sample2.database")
             schemaOutputDirectory.set(file("src/commonMain/sqldelight/databases"))
             generateAsync.set(true)
             deriveSchemaFromMigrations.set(true)

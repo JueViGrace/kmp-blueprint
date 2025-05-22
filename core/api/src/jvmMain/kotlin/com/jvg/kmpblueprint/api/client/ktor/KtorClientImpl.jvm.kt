@@ -1,4 +1,4 @@
-package com.jvg.kmpblueprint.api.client
+package com.jvg.kmpblueprint.api.client.ktor
 
 import com.jvg.kmpblueprint.util.Logs
 import io.ktor.client.HttpClient
@@ -13,15 +13,15 @@ import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.plugins.observer.ResponseObserver
 import io.ktor.serialization.kotlinx.json.json
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.serialization.json.Json
-import kotlin.coroutines.CoroutineContext
 
 // todo: configure client as you prefer
+/*
+* Ktor client JVM implementation.
+* @param baseUrl Base url for the client.
+* */
 actual class KtorClientImpl actual constructor(
     actual override val baseUrl: String,
-    actual override val coroutineContext: CoroutineContext,
-    actual override val scope: CoroutineScope
 ) : KtorClient {
     actual override fun client(baseUrl: String?): HttpClient {
         return HttpClient(OkHttp) {

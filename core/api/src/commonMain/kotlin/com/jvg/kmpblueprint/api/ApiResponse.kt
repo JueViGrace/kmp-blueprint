@@ -3,8 +3,10 @@ package com.jvg.kmpblueprint.api
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-// Generic server response data class
-// It receives the actual body of the response in the generic data field
+/*
+* Generic server response data class
+* It receives the actual body of the response in the generic data field
+* */
 @Serializable
 data class ApiResponse<T>(
     @SerialName("status")

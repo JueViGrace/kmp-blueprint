@@ -1,8 +1,9 @@
-package com.jvg.kmpblueprint.api.client
+package com.jvg.kmpblueprint.api.client.ktor
 
 import com.jvg.kmpblueprint.api.ApiOperation
 import com.jvg.kmpblueprint.api.ApiResponse
 import com.jvg.kmpblueprint.api.NetworkRequestMethod
+import com.jvg.kmpblueprint.api.client.NetworkClient
 import com.jvg.kmpblueprint.api.getKtorHttpMethod
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -16,12 +17,31 @@ import io.ktor.http.contentType
 import io.ktor.http.path
 import kotlinx.coroutines.ensureActive
 
-// Default interface for a network client using Ktor
+/*
+* Default ktor client interface.
+* */
 interface KtorClient : NetworkClient {
-    // Client function that accepts a base url and returns a Ktor HttpClient
+     /*
+      * todo:
+      *     i think this creates a new client every time
+      *     it could be good to have a property for this
+      *     instead of creating a new client every time
+      */
+    /*
+     *  Creates http client.
+     *  @param baseUrl Base url for the request.
+     * */
     fun client(baseUrl: String? = null): HttpClient
 
-    // Default implementation to make network requests for this client
+    /*
+     * Implementation of call.
+     * @param method Network request method.
+     * @param baseUrl Base url for the request.
+     * @param urlString Complete path for the request, should not contain prefixes if there is already one created.
+     * @param body Request body.
+     * @param headers Request headers.
+     * @param contentType Request content type.
+     * */
     override suspend fun <T, R> call(
         method: NetworkRequestMethod,
         baseUrl: String?,
@@ -50,14 +70,19 @@ interface KtorClient : NetworkClient {
             ApiOperation.Success(body)
         } catch (e: Exception) {
             coroutineContext.ensureActive()
-            ApiOperation.Error(e)
+            ApiOperation.Failure(e)
         }
     }
 
     companion object {
+        /*
+         * Timeout for the requests.
+         * */
         const val TIMEOUT = 30000L
 
-        // Extension function to set the URL for this client
+        /*
+         * Extension function to set the URL for this client
+         * */
         fun URLBuilder.setUrl(urlString: String) {
             if (urlString.contains("?")) {
                 val path: List<String> = urlString.split("?")
