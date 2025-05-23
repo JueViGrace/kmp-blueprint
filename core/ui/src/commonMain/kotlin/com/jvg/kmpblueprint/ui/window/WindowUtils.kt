@@ -58,4 +58,8 @@ interface WindowUtils {
             }
         }
     }
+
+    companion object {
+        val instance: WindowUtils = WindowUtilsImpl
+    }
 }

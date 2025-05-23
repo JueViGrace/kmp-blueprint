@@ -12,12 +12,26 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlin.coroutines.CoroutineContext
 
+/*
+* Standard repository.
+* */
 interface Repository {
+    /*
+     * @property coroutineContext Context used for the coroutines launched in repositories.
+     * */
     val coroutineContext: CoroutineContext
         get() = Dispatchers.Default
+
+    /*
+     * @property scope Scope to launch coroutines in repositories.
+     * */
     val scope: CoroutineScope
         get() = CoroutineScope(coroutineContext + SupervisorJob())
 
+    /*
+     * Starts a flow and returns a RequestState<T> with the provided type.
+     * @param block Block that delegates the actual job for this flow to the caller.
+     * */
     fun <T> startFlow(
         block: suspend FlowCollector<RequestState<T>>.() -> Unit
     ): Flow<RequestState<T>> {
@@ -36,6 +50,11 @@ interface Repository {
         }.flowOn(coroutineContext)
     }
 
+    /*
+     * Starts a flow and then executes a network request and returns a RequestState<R> with the provided type.
+     * @param call Network request to execute.
+     * @param block Block that delegates the actual job for this flow to the caller.
+     * */
     fun <T, R> startNetworkRequest(
         call: suspend () -> ApiOperation<T>,
         block: suspend FlowCollector<RequestState<R>>.(data: T) -> Unit,
@@ -53,6 +72,12 @@ interface Repository {
         }
     }
 
+    /*
+     * Checks the state of the network request and returns a RequestState<T> with the provided type.
+     * @param call Value to check.
+     * @param onError Block that returns the error of the call to the caller.
+     * @param onSuccess Block that returns the response to the caller.
+     * */
     suspend fun <T> checkNetworkResponse(
         call: ApiOperation<T>,
         onError: suspend (error: RequestState.Error) -> Unit,

@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 group = "com.jvg.kmpblueprint.ui"
@@ -39,6 +40,11 @@ kotlin {
 
             // Coroutines
             implementation(libs.kotlinx.coroutines.android)
+
+            // Koin
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
+            implementation(libs.koin.androidx.compose.navigation)
         }
 
         commonMain.dependencies {
@@ -74,8 +80,19 @@ kotlin {
             implementation(libs.coil.ktor3)
             implementation(libs.coil.cache)
 
+            // Koin
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel.navigation)
+
+            // Lifecycle
+            implementation(libs.lifecycle.runtime.compose)
+
             // Navigation
             implementation(libs.navigation.compose)
+
+            // Serialization
+            implementation(libs.kotlinx.serialization.json)
         }
 
         iosMain.dependencies {}

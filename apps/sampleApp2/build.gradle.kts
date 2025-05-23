@@ -52,11 +52,17 @@ kotlin {
         commonMain.dependencies {
             /* Projects */
 
+            // Api
+            implementation(projects.core.api)
+
             // Database
             implementation(projects.feature.sample2Database)
 
             // Resources
             implementation(projects.core.resources)
+
+            // Shared
+            implementation(projects.core.shared)
 
             // UI
             implementation(projects.core.ui)

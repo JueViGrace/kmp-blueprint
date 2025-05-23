@@ -65,6 +65,9 @@ kotlin {
             // Resources
             implementation(projects.core.resources)
 
+            // Shared
+            implementation(projects.core.shared)
+
             // UI
             implementation(projects.core.ui)
 

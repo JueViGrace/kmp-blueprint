@@ -3,6 +3,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.compose.multiplatform)
+    alias(libs.plugins.compose.compiler)
 }
 
 group = "com.jvg.kmpblueprint.shared"
@@ -43,10 +45,23 @@ kotlin {
             // Types
             implementation(projects.core.types)
 
+            // UI
+            implementation(projects.core.ui)
+
             // Util
             implementation(projects.core.util)
 
             /* Dependencies */
+
+            // Compose
+            implementation(compose.animation)
+            implementation(compose.components.resources)
+            implementation(compose.components.uiToolingPreview)
+            implementation(compose.foundation)
+            implementation(compose.materialIconsExtended)
+            implementation(compose.material3)
+            implementation(compose.runtime)
+            implementation(compose.ui)
 
             // Coroutines
             implementation(libs.kotlinx.coroutines.core)
@@ -79,4 +94,8 @@ android {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
+}
+
+compose.resources {
+    generateResClass = never
 }

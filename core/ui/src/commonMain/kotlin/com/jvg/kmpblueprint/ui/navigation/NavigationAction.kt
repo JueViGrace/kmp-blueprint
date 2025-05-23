@@ -8,11 +8,5 @@ sealed interface NavigationAction {
         val navOptions: NavOptions? = null
     ) : NavigationAction
 
-    data class PopUntil(
-        val destination: Destination,
-        val inclusive: Boolean = false,
-        val saveState: Boolean = false
-    ) : NavigationAction
-
     data object NavigateUp : NavigationAction
 }

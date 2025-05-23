@@ -13,7 +13,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 /*
 * Android platform implementation of the WindowUtils interface
 * */
-actual object WindowUtilsImpl : WindowUtils {
+internal actual object WindowUtilsImpl : WindowUtils {
     @Composable
     actual override fun getScreenOrientation(): Orientation {
         var orientation by rememberSaveable { mutableIntStateOf(Configuration.ORIENTATION_PORTRAIT) }
