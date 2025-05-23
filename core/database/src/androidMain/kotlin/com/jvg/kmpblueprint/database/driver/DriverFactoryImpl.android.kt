@@ -28,7 +28,7 @@ actual class DriverFactoryImpl(
         )
     }
 
-    actual override fun createDriver(schema: SqlSchema<QueryResult.AsyncValue<Unit>>, name: String): SqlDriver {
+    actual override fun createAsyncDriver(schema: SqlSchema<QueryResult.AsyncValue<Unit>>, name: String): SqlDriver {
         return AndroidSqliteDriver(
             schema = schema.synchronous(),
             context = context,

@@ -3,11 +3,9 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.compose.multiplatform)
-    alias(libs.plugins.compose.compiler)
 }
 
-group = "com.jvg.blueprint.util"
+group = "com.jvg.kmpblueprint.util"
 
 kotlin {
     androidTarget {
@@ -29,16 +27,7 @@ kotlin {
         }
 
         commonMain.dependencies {
-            /* Projects */
-
-            // Resources
-            implementation(projects.core.resources)
-
             /* Dependencies */
-
-            // Compose
-            implementation(compose.runtime)
-            implementation(compose.components.resources)
 
             // Coroutines
             implementation(libs.kotlinx.coroutines.core)
@@ -57,7 +46,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.jvg.blueprint.util"
+    namespace = "com.jvg.kmpblueprint.util"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

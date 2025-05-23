@@ -3,10 +3,9 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.sqldelight)
 }
 
-group = "com.jvg.blueprint.database"
+group = "com.jvg.kmpblueprint.database"
 
 kotlin {
     androidTarget {
@@ -65,7 +64,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.jvg.blueprint.database"
+    namespace = "com.jvg.kmpblueprint.database"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
@@ -75,27 +74,5 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
-    }
-}
-
-sqldelight {
-    databases {
-        create("Sample1DB") {
-            srcDirs.setFrom("src/commonMain/sqldelight/sample1")
-            packageName.set("com.jvg.sample1.database")
-            schemaOutputDirectory.set(file("src/commonMain/sqldelight/databases"))
-            generateAsync.set(true)
-            deriveSchemaFromMigrations.set(true)
-            verifyMigrations.set(true)
-        }
-
-        create("Sample2DB") {
-            srcDirs.setFrom("src/commonMain/sqldelight/sample2")
-            packageName.set("com.jvg.sample2.database")
-            schemaOutputDirectory.set(file("src/commonMain/sqldelight/databases"))
-            generateAsync.set(true)
-            deriveSchemaFromMigrations.set(true)
-            verifyMigrations.set(true)
-        }
     }
 }

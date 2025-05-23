@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
-group = "com.jvg.blueprint.api"
+group = "com.jvg.kmpblueprint.api"
 
 kotlin {
     androidTarget {
@@ -49,6 +49,9 @@ kotlin {
 
             // Serialization
             implementation(libs.kotlinx.serialization.json)
+
+            // Reflect
+            implementation(libs.kotlin.reflect)
         }
 
         iosMain.dependencies {
@@ -67,7 +70,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.jvg.blueprint.api"
+    namespace = "com.jvg.kmpblueprint.api"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

@@ -1,6 +1,7 @@
 package com.jvg.sample2
 
 import android.app.Application
+import com.jvg.sample2.app.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -14,8 +15,7 @@ class Sample2App : Application() {
         startKoin {
             androidContext(this@Sample2App)
             androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
-
-            // todo: add app module
+            modules(appModule())
         }
     }
 }

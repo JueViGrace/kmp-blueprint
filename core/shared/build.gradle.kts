@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
 }
 
-group = "com.jvg.blueprint.shared"
+group = "com.jvg.kmpblueprint.shared"
 
 kotlin {
     androidTarget {
@@ -36,9 +36,6 @@ kotlin {
 
             // Api
             implementation(projects.core.api)
-
-            // Database
-            implementation(projects.core.database)
 
             // Resources
             implementation(projects.core.resources)
@@ -71,7 +68,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.jvg.blueprint.shared"
+    namespace = "com.jvg.kmpblueprint.shared"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

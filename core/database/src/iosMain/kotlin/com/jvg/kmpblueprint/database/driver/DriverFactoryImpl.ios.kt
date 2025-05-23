@@ -14,7 +14,7 @@ actual class DriverFactoryImpl : DriverFactory {
         return NativeSqliteDriver(schema, name)
     }
 
-    actual override fun createDriver(schema: SqlSchema<QueryResult.AsyncValue<Unit>>, name: String): SqlDriver {
+    actual override fun createAsyncDriver(schema: SqlSchema<QueryResult.AsyncValue<Unit>>, name: String): SqlDriver {
         return NativeSqliteDriver(schema.synchronous(), name)
     }
 }

@@ -1,4 +1,6 @@
 package com.jvg.kmpblueprint.types.common
 
-// Object containing common constants used in all the projects
+/*
+* Object containing common constants used in all the projects.
+* */
 expect object Constants

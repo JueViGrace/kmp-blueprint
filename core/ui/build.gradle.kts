@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-group = "com.jvg.blueprint.ui"
+group = "com.jvg.kmpblueprint.ui"
 
 kotlin {
     androidTarget {
@@ -24,6 +24,10 @@ kotlin {
 
     sourceSets {
         androidMain.dependencies {
+            // Android
+            implementation(libs.androidx.core.ktx)
+            implementation(libs.androidx.activity.compose)
+
             // Camera
             implementation(libs.androidx.camera.core)
             implementation(libs.androidx.camera.camera2)
@@ -84,7 +88,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.jvg.blueprint.ui"
+    namespace = "com.jvg.kmpblueprint.ui"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

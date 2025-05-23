@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-group = "com.jvg.blueprint.resources"
+group = "com.jvg.kmpblueprint.resources"
 
 // todo: generate resources from gradle.properties or local.properties and add them as a generated resource
 
@@ -40,7 +40,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.jvg.blueprint.resources"
+    namespace = "com.jvg.kmpblueprint.resources"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

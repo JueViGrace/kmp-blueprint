@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
 }
 
-group = "com.jvg.blueprint.types"
+group = "com.jvg.kmpblueprint.types"
 
 kotlin {
     androidTarget {
@@ -57,7 +57,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.jvg.blueprint.types"
+    namespace = "com.jvg.kmpblueprint.types"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

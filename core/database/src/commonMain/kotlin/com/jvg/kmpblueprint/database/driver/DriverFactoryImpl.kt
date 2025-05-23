@@ -13,7 +13,7 @@ expect class DriverFactoryImpl : DriverFactory {
         name: String
     ): SqlDriver
 
-    override fun createDriver(
+    override fun createAsyncDriver(
         schema: SqlSchema<QueryResult.AsyncValue<Unit>>,
         name: String
     ): SqlDriver

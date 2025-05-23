@@ -8,6 +8,8 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
+group = "com.jvg.sample2"
+
 kotlin {
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -49,6 +51,9 @@ kotlin {
         }
         commonMain.dependencies {
             /* Projects */
+
+            // Database
+            implementation(projects.feature.sample2Database)
 
             // Resources
             implementation(projects.core.resources)

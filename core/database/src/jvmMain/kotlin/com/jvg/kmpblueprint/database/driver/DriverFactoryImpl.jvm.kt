@@ -19,7 +19,7 @@ actual class DriverFactoryImpl : DriverFactory {
         return driver
     }
 
-    actual override fun createDriver(schema: SqlSchema<QueryResult.AsyncValue<Unit>>, name: String): SqlDriver {
+    actual override fun createAsyncDriver(schema: SqlSchema<QueryResult.AsyncValue<Unit>>, name: String): SqlDriver {
         val driver = JdbcSqliteDriver(
             url = name,
             properties = Properties().apply { put("foreign_keys", "true") }

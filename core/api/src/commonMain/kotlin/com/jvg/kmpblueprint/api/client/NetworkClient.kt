@@ -12,9 +12,6 @@ import kotlin.coroutines.CoroutineContext
 * Default network client interface.
 * */
 interface NetworkClient {
-    /*
-     * @property baseUrl Default base url for the client.
-     * */
     val baseUrl: String
 
     // You can remove this properties if you don't need them

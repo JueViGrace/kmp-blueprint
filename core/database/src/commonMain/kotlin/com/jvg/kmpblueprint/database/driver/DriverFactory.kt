@@ -20,5 +20,5 @@ interface DriverFactory {
      * @param schema SqlSchema to create the driver
      * @param name Name of the database or url where the resulting db will be created
      * */
-    fun createDriver(schema: SqlSchema<QueryResult.AsyncValue<Unit>>, name: String): SqlDriver
+    fun createAsyncDriver(schema: SqlSchema<QueryResult.AsyncValue<Unit>>, name: String): SqlDriver
 }

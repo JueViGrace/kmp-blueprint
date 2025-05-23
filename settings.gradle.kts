@@ -43,3 +43,9 @@ include(
     ":core:ui",
     ":core:util",
 )
+
+// feature library
+include(
+    ":feature:sample1-database",
+    ":feature:sample2-database",
+)
