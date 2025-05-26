@@ -29,7 +29,7 @@ interface NetworkClient {
      * @param headers Request headers.
      * @param contentType Request content type.
      * */
-    suspend fun<T, R> call(
+    suspend fun <T, R> call(
         method: NetworkRequestMethod,
         baseUrl: String?,
         urlString: String,
@@ -45,7 +45,7 @@ interface NetworkClient {
      * @param headers Request headers.
      * @param contentType Request content type.
      * */
-    suspend fun<T> get(
+    suspend fun <T> get(
         baseUrl: String? = null,
         urlString: String,
         headers: Map<String, String> = emptyMap(),
@@ -68,7 +68,7 @@ interface NetworkClient {
      * @param headers Request headers.
      * @param contentType Request content type.
      * */
-    suspend fun<T> post(
+    suspend fun <T> post(
         baseUrl: String? = null,
         urlString: String,
         body: T? = null,
@@ -92,7 +92,7 @@ interface NetworkClient {
      * @param headers Request headers.
      * @param contentType Request content type.
      * */
-    suspend fun<T> put(
+    suspend fun <T> put(
         baseUrl: String? = null,
         urlString: String,
         body: T? = null,
@@ -116,7 +116,7 @@ interface NetworkClient {
      * @param headers Request headers.
      * @param contentType Request content type.
      * */
-    suspend fun<T> delete(
+    suspend fun <T> delete(
         baseUrl: String? = null,
         urlString: String,
         body: T? = null,
@@ -140,7 +140,7 @@ interface NetworkClient {
      * @param headers Request headers.
      * @param contentType Request content type.
      * */
-    suspend fun<T> patch(
+    suspend fun <T> patch(
         baseUrl: String? = null,
         urlString: String,
         body: T? = null,
@@ -156,8 +156,6 @@ interface NetworkClient {
             contentType = contentType,
         )
     }
-
-    // todo: make head and options methods
 
     companion object {
         /*

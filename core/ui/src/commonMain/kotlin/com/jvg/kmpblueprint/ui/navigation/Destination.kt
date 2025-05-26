@@ -7,9 +7,6 @@ import kotlinx.serialization.Serializable
 * */
 @Serializable
 sealed interface Destination {
-    /*
-     * Shared destinations
-     * */
     @Serializable
     data object Root : Destination
 
@@ -31,19 +28,13 @@ sealed interface Destination {
         data object ForgotPassword : AuthGraph
 
         @Serializable
-        data object PrivacyPolicy : AuthGraph
-
-        @Serializable
-        data object TermsAndConditions : AuthGraph
-
-        @Serializable
         sealed interface Sample1Graph : AuthGraph {
-            // todo: add app specific destinations for authentication
+            // add app specific destinations for authentication
         }
 
         @Serializable
         sealed interface Sample2Graph : AuthGraph {
-            // todo: add app specific destinations for authentication
+            // add app specific destinations for authentication
         }
     }
 

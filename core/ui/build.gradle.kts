@@ -40,6 +40,9 @@ kotlin {
 
             // Coroutines
             implementation(libs.kotlinx.coroutines.android)
+
+            // Koin
+            implementation(libs.koin.android)
         }
 
         commonMain.dependencies {
@@ -77,6 +80,9 @@ kotlin {
 
             // Lifecycle
             implementation(libs.lifecycle.runtime.compose)
+
+            // Koin
+            implementation(libs.koin.core)
 
             // Navigation
             implementation(libs.navigation.compose)

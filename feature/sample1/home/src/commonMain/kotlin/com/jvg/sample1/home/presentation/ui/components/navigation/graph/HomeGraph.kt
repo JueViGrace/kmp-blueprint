@@ -8,7 +8,6 @@ import com.jvg.kmpblueprint.home.presentation.ui.components.navigation.entries.h
 import com.jvg.kmpblueprint.home.presentation.ui.components.navigation.entries.settingsNav
 import com.jvg.kmpblueprint.ui.navigation.Destination
 
-// todo: add lambdas if entry is implemented as a separate module
 /*
  * Home navigation graph
  * */

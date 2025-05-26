@@ -15,7 +15,6 @@ import io.ktor.client.plugins.observer.ResponseObserver
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-// todo: configure client as you prefer
 /*
 * Ktor client JVM implementation.
 * @param baseUrl Base url for the client.

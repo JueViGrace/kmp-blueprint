@@ -26,6 +26,9 @@ kotlin {
         androidMain.dependencies {
             // Coroutines
             implementation(libs.kotlinx.coroutines.android)
+
+            // Koin
+            implementation(libs.koin.android)
         }
 
         commonMain.dependencies {
@@ -39,6 +42,9 @@ kotlin {
 
             // Types
             implementation(projects.core.types)
+
+            // UI
+            implementation(projects.core.ui)
 
             // Util
             implementation(projects.core.util)
@@ -56,6 +62,9 @@ kotlin {
             implementation(libs.lifecycle.viewmodel)
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.lifecycle.viewmodel.savedstate)
+
+            // Koin
+            implementation(libs.koin.core)
         }
 
         iosMain.dependencies {}

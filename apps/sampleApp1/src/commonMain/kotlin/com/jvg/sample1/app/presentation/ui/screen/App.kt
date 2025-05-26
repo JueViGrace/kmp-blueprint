@@ -21,7 +21,7 @@ fun App() {
             LaunchedEffect(Unit) {
                 delay(700)
                 navigator.navigate(
-                    destination = Destination.HomeGraph.Home,
+                    destination = Destination.AuthGraph.SignIn,
                     navOptions = navOptions {
                         popUpTo(Destination.Splash) {
                             inclusive = true
