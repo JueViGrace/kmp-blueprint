@@ -45,7 +45,24 @@ include(
 )
 
 // feature library
+
+// shared features
 include(
-    ":feature:sample1-database",
-    ":feature:sample2-database",
+    ":feature:shared:app",
+    ":feature:shared:auth",
+    ":feature:shared:home",
+)
+
+// Sample1 features
+include(
+    ":feature:sample1:auth",
+    ":feature:sample1:database",
+    ":feature:sample1:home",
+)
+
+// Sample2 features
+include(
+    ":feature:sample2:auth",
+    ":feature:sample2:database",
+    ":feature:sample2:home",
 )

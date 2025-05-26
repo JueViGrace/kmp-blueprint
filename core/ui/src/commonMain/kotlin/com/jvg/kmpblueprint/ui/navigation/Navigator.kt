@@ -21,4 +21,8 @@ interface Navigator {
     suspend fun navigateUp()
 
     fun consumeAction(action: NavigationAction)
+
+    companion object {
+        val instance: Navigator = NavigatorImpl
+    }
 }

@@ -26,11 +26,6 @@ kotlin {
         androidMain.dependencies {
             // Coroutines
             implementation(libs.kotlinx.coroutines.android)
-
-            // Koin
-            implementation(libs.koin.android)
-            implementation(libs.koin.androidx.compose)
-            implementation(libs.koin.androidx.compose.navigation)
         }
 
         commonMain.dependencies {
@@ -45,32 +40,22 @@ kotlin {
             // Types
             implementation(projects.core.types)
 
-            // UI
-            implementation(projects.core.ui)
-
             // Util
             implementation(projects.core.util)
 
             /* Dependencies */
 
             // Compose
-            implementation(compose.animation)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation(compose.foundation)
-            implementation(compose.materialIconsExtended)
-            implementation(compose.material3)
             implementation(compose.runtime)
-            implementation(compose.ui)
 
             // Coroutines
             implementation(libs.kotlinx.coroutines.core)
 
-            // Koin
-            implementation(libs.koin.core)
-            implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
-            implementation(libs.koin.compose.viewmodel.navigation)
+            // Lifecycle
+            implementation(libs.lifecycle.runtime.compose)
+            implementation(libs.lifecycle.viewmodel)
+            implementation(libs.lifecycle.viewmodel.compose)
+            implementation(libs.lifecycle.viewmodel.savedstate)
         }
 
         iosMain.dependencies {}

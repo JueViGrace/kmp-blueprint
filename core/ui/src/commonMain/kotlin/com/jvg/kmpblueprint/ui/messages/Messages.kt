@@ -7,4 +7,8 @@ interface Messages {
     val messages: Flow<Message>
 
     suspend fun sendMessage(message: StringResource, description: String? = null)
+
+    companion object {
+        val instance: Messages = MessagesImpl
+    }
 }

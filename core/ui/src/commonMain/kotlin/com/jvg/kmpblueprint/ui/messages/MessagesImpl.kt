@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
 import org.jetbrains.compose.resources.StringResource
 
-class MessagesImpl : Messages {
+internal object MessagesImpl : Messages {
     private val _messages: Channel<Message> = Channel<Message>()
     override val messages: Flow<Message> = _messages.receiveAsFlow()
 

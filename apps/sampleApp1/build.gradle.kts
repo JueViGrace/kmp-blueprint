@@ -43,9 +43,6 @@ kotlin {
             implementation(libs.androidx.app.update)
             implementation(libs.androidx.app.update.ktx)
 
-            // Compose
-            implementation(compose.preview)
-
             // Coroutines
             implementation(libs.kotlinx.coroutines.android)
 
@@ -59,14 +56,20 @@ kotlin {
             // Api
             implementation(projects.core.api)
 
+            // App
+            implementation(projects.feature.shared.app)
+
+            // Auth
+            implementation(projects.feature.sample1.auth)
+
             // Database
-            implementation(projects.feature.sample1Database)
+            implementation(projects.feature.sample1.database)
+
+            // Home
+            implementation(projects.feature.sample1.home)
 
             // Resources
             implementation(projects.core.resources)
-
-            // Shared
-            implementation(projects.core.shared)
 
             // UI
             implementation(projects.core.ui)
@@ -74,14 +77,14 @@ kotlin {
             /* Dependencies */
 
             // Compose
-            implementation(compose.runtime)
             implementation(compose.animation)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.materialIconsExtended)
-            implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(compose.foundation)
+            implementation(compose.materialIconsExtended)
+            implementation(compose.material3)
+            implementation(compose.runtime)
+            implementation(compose.ui)
 
             // Coroutines
             implementation(libs.kotlinx.coroutines.core)

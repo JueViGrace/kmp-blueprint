@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 
-class NavigatorImpl : Navigator {
+internal object NavigatorImpl : Navigator {
     private val _navigationActions: Channel<NavigationAction> = Channel<NavigationAction>()
     override val navigationActions: Flow<NavigationAction> = _navigationActions.receiveAsFlow()
 
