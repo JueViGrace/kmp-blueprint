@@ -6,14 +6,23 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.jvg.kmpblueprint.auth.presentation.signup.viewmodel.SignUpViewModel
+import com.jvg.kmpblueprint.resources.resources.generated.resources.Res
+import com.jvg.kmpblueprint.resources.resources.generated.resources.welcome
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun SignUpScreen() {
     val viewmodel: SignUpViewModel = koinViewModel()
+
+    LaunchedEffect(Unit) {
+        viewmodel.sendMessage(
+            message = Res.string.welcome
+        )
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),

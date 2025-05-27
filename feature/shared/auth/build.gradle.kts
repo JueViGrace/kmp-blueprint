@@ -110,3 +110,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_21
     }
 }
+
+compose.resources {
+    generateResClass = never
+}

@@ -2,7 +2,6 @@ package com.jvg.sample1.app.di
 
 import com.jvg.kmpblueprint.api.client.ktor.KtorClient
 import com.jvg.kmpblueprint.api.client.ktor.KtorClientImpl
-import com.jvg.kmpblueprint.ui.di.uiModule
 import com.jvg.sample1.auth.di.authModule
 import com.jvg.sample1.database.di.databaseModule
 import org.koin.core.module.Module
@@ -19,7 +18,7 @@ fun appModule(): Module = module {
     }
 
     // Core modules
-    includes(databaseModule(), uiModule())
+    includes(databaseModule())
 
     // Feature modules
     includes(authModule())

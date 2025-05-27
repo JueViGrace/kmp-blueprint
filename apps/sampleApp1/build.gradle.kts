@@ -163,10 +163,6 @@ android {
     }
 }
 
-dependencies {
-    debugImplementation(compose.uiTooling)
-}
-
 compose {
     desktop {
         application {
@@ -183,4 +179,8 @@ compose {
     resources {
         generateResClass = never
     }
+}
+
+dependencies {
+    debugImplementation(compose.uiTooling)
 }

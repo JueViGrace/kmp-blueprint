@@ -59,6 +59,8 @@
     <string name="event_not_implemented">Event not implemented</string>
     <string name="open_link">Open link</string>
     <string name="update">Update</string>
+    <string name="profile">Profile</string>
+    <string name="chats" translatable="false">Chats</string>
     <!--Error Messages-->
     <string name="not_available">Not available</string>
     <string name="authenticate_first">You need to authenticate first</string>

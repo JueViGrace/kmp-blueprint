@@ -57,6 +57,7 @@
     <string name="event_not_implemented">Evento no implementado</string>
     <string name="open_link">Abrir enlace</string>
     <string name="update">Actualizar</string>
+    <string name="profile">Perfil</string>
     <!--Error Messages-->
     <string name="not_available">No disponible</string>
     <string name="authenticate_first">Necesitas autenticarte primero</string>

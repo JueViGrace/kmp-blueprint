@@ -7,6 +7,7 @@ API:
 UI:
 
 - make actual implementation of method getScreenOrientation in WindowUtilsImpl.ios.kt.
+- a scaffold internal state might be needed if there's a single scaffold in the apps
 
 Home:
 

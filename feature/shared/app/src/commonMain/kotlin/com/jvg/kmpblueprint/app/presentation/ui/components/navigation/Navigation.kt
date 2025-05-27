@@ -1,4 +1,4 @@
-package com.jvg.kmpblueprint.ui.components.navigation
+package com.jvg.kmpblueprint.app.presentation.ui.components.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder

@@ -1,4 +1,4 @@
-package com.jvg.sample1.auth.presentation.ui.components.navigation.graph.graph
+package com.jvg.sample1.auth.presentation.ui.components.navigation.graph
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation

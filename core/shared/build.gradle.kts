@@ -53,6 +53,7 @@ kotlin {
 
             // Compose
             implementation(compose.runtime)
+            implementation(compose.components.resources)
 
             // Coroutines
             implementation(libs.kotlinx.coroutines.core)

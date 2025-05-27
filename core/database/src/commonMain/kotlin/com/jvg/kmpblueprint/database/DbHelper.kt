@@ -4,7 +4,6 @@ import app.cash.sqldelight.Query
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
 import app.cash.sqldelight.coroutines.mapToOneOrNull
-import com.jvg.kmpblueprint.database.driver.DriverFactory
 import com.jvg.kmpblueprint.util.Logs
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -46,7 +45,7 @@ interface DbHelper<T> {
         return query.asFlow().mapToList(coroutineContext)
     }
 
-    suspend fun<R : Any> withDatabase(
+    suspend fun <R : Any> withDatabase(
         block: suspend T.() -> R?,
     ): R? {
         return withContext(coroutineContext) {

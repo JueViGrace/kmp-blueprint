@@ -55,6 +55,9 @@ sealed interface Destination {
             data object Profile : Sample1Graph
 
             @Serializable
+            data object Chats : Sample1Graph
+
+            @Serializable
             data class Chat(val chatId: String) : Sample1Graph
         }
 
