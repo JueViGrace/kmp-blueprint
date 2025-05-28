@@ -3,7 +3,7 @@ package com.jvg.kmpblueprint.ui.components.navigation
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import com.jvg.kmpblueprint.ui.navigation.Navigator
+import com.jvg.kmpblueprint.ui.navigation.navigator.Navigator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.android.awaitFrame

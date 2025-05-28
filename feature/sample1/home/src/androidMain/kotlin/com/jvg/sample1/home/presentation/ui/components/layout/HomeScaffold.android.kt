@@ -2,71 +2,61 @@ package com.jvg.sample1.home.presentation.ui.components.layout
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
-import androidx.navigation.NavHostController
+import com.jvg.kmpblueprint.ui.Fonts
 import com.jvg.kmpblueprint.ui.components.display.TextComponent
+import com.jvg.kmpblueprint.ui.components.layout.MobileScaffold
 import com.jvg.kmpblueprint.ui.components.layout.bars.top.TopBarComponent
-import com.jvg.kmpblueprint.ui.navigation.LocalNavigator
-import com.jvg.kmpblueprint.ui.navigation.Navigator
-import com.jvg.sample1.home.presentation.ui.components.layout.bar.BottomBarComponent
-import com.jvg.sample1.home.presentation.ui.model.BottomDestinations
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
+import com.jvg.kmpblueprint.ui.navigation.tab.Sample1Tabs
+import com.jvg.kmpblueprint.ui.navigation.tab.Tab
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 actual fun HomeScaffold(
-    navController: NavHostController,
     snackbarHost: @Composable (() -> Unit),
     content: @Composable ((PaddingValues) -> Unit)
 ) {
-    val navigator: Navigator = LocalNavigator.current
-    val scope: CoroutineScope = rememberCoroutineScope()
-
-    var currentTab: BottomDestinations by remember {
-        mutableStateOf(BottomDestinations.Chats)
+    val tabs: List<Tab> by remember {
+        mutableStateOf(
+            listOf(
+                Sample1Tabs.Chats,
+                Sample1Tabs.Profile
+            )
+        )
     }
 
-    Scaffold(
-        topBar = {
+    MobileScaffold(
+        tabs = tabs,
+        topBar = { currentTab ->
             when (currentTab) {
-                BottomDestinations.Chats -> {
+                Sample1Tabs.Chats -> {
                     TopBarComponent(
                         title = {
-                            // todo: current selected tab
                             TextComponent(
                                 text = stringResource(currentTab.title),
+                                style = Fonts.extraLargeTextStyle,
                             )
                         }
                     )
                 }
 
-                BottomDestinations.Profile -> {
+                Sample1Tabs.Profile -> {
                     TopBarComponent(
                         title = {
-                            // todo: current selected tab
                             TextComponent(
                                 text = stringResource(currentTab.title),
+                                style = Fonts.extraLargeTextStyle,
                             )
                         }
                     )
                 }
-            }
-        },
-        bottomBar = {
-            BottomBarComponent(
-                navController = navController,
-            ) { destination ->
-                currentTab = destination
-                scope.launch {
-                    navigator.navigate(destination.route)
+
+                else -> {
+                    error("Invalid tab entry")
                 }
             }
         },

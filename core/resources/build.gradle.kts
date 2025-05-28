@@ -35,7 +35,10 @@ kotlin {
 
         iosMain.dependencies {}
 
-        jvmMain.dependencies {}
+        jvmMain.dependencies {
+            // Compose
+            implementation(compose.desktop.common)
+        }
     }
 }
 

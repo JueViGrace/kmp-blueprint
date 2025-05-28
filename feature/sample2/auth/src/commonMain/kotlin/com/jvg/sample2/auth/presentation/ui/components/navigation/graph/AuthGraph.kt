@@ -5,14 +5,14 @@ import androidx.navigation.navigation
 import com.jvg.kmpblueprint.auth.presentation.forgot.ui.components.navigation.forgotPasswordNav
 import com.jvg.kmpblueprint.auth.presentation.signin.ui.components.navigation.signInNav
 import com.jvg.kmpblueprint.auth.presentation.signup.ui.components.navigation.signUpNav
-import com.jvg.kmpblueprint.ui.navigation.Destination
+import com.jvg.kmpblueprint.ui.navigation.AuthGraph
 import com.jvg.sample2.auth.presentation.ui.forgot.ui.screen.ForgotPasswordScreen
 import com.jvg.sample2.auth.presentation.ui.signin.ui.screen.SignInScreen
 import com.jvg.sample2.auth.presentation.ui.signup.ui.screen.SignUpScreen
 
 fun NavGraphBuilder.authGraph() {
-    navigation<Destination.AuthGraph.Graph>(
-        startDestination = Destination.AuthGraph.SignIn
+    navigation<AuthGraph.Graph>(
+        startDestination = AuthGraph.SignIn
     ) {
         signInNav {
             SignInScreen()

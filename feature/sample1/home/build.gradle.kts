@@ -41,6 +41,7 @@ kotlin {
 
             // Database
             implementation(projects.core.database)
+            implementation(projects.feature.sample1.database)
 
             // Home
             implementation(projects.feature.shared.home)
@@ -94,6 +95,9 @@ kotlin {
         iosMain.dependencies {}
 
         jvmMain.dependencies {
+            // Compose
+            implementation(compose.desktop.common)
+
             // Coroutines
             implementation(libs.kotlinx.coroutines.swing)
         }

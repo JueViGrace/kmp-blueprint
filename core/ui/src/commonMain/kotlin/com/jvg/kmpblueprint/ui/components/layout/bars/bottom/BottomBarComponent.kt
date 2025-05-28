@@ -1,39 +1,23 @@
-package com.jvg.sample1.home.presentation.ui.components.layout.bar
+package com.jvg.kmpblueprint.ui.components.layout.bars.bottom
 
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.navigation.NavHostController
-import androidx.navigation.toRoute
 import com.jvg.kmpblueprint.ui.components.display.IconComponent
 import com.jvg.kmpblueprint.ui.components.display.TextComponent
-import com.jvg.kmpblueprint.ui.components.layout.bars.bottom.BottomTabItem
-import com.jvg.kmpblueprint.ui.navigation.Destination
-import com.jvg.sample1.home.presentation.ui.model.BottomDestinations
+import com.jvg.kmpblueprint.ui.navigation.tab.Tab
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun BottomBarComponent(
-    navController: NavHostController,
+    tabs: List<Tab>,
+    currentTab: Tab,
     floatingActionButton: (@Composable () -> Unit)? = null,
-    onItemClick: (BottomDestinations) -> Unit
+    onItemClick: (Tab) -> Unit
 ) {
-    var route: Destination? by remember {
-        mutableStateOf(null)
-    }
-
-    LaunchedEffect(navController.currentBackStackEntry) {
-        route = navController.currentBackStackEntry?.toRoute()
-    }
-
     BottomAppBar(
         actions = {
-            for (destination: BottomDestinations in BottomDestinations.values) {
+            tabs.forEach { destination ->
                 BottomTabItem(
                     label = {
                         TextComponent(
@@ -45,7 +29,7 @@ fun BottomBarComponent(
                             painter = painterResource(destination.icon)
                         )
                     },
-                    selected = route == destination.route,
+                    selected = destination == currentTab,
                     onClick = {
                         onItemClick(destination)
                     }

@@ -91,6 +91,9 @@ kotlin {
         iosMain.dependencies {}
 
         jvmMain.dependencies {
+            // Compose
+            implementation(compose.desktop.common)
+
             // Coroutines
             implementation(libs.kotlinx.coroutines.swing)
         }

@@ -36,11 +36,26 @@ kotlin {
         commonMain.dependencies {
             /* Projects */
 
+            // Api
+            implementation(projects.core.api)
+
+            // Database
+            implementation(projects.core.database)
+
             // Resources
             implementation(projects.core.resources)
 
+            // Shared
+            implementation(projects.core.shared)
+
+            // Types
+            implementation(projects.core.types)
+
             // UI
             implementation(projects.core.ui)
+
+            // Util
+            implementation(projects.core.util)
 
             /* Dependencies */
 
@@ -73,6 +88,9 @@ kotlin {
         iosMain.dependencies {}
 
         jvmMain.dependencies {
+            // Compose
+            implementation(compose.desktop.common)
+
             // Coroutines
             implementation(libs.kotlinx.coroutines.swing)
         }

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.navOptions
 import com.jvg.kmpblueprint.shared.presentation.viewmodel.BaseViewModel
-import com.jvg.kmpblueprint.ui.navigation.Destination
+import com.jvg.kmpblueprint.ui.navigation.AuthGraph
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -14,9 +14,9 @@ class SignInViewModel : BaseViewModel, ViewModel() {
     fun navigateToForgotPassword() {
         viewModelScope.launch {
             navigator.navigate(
-                Destination.AuthGraph.ForgotPassword,
+                AuthGraph.ForgotPassword,
                 navOptions = navOptions {
-                    popUpTo(Destination.AuthGraph.SignIn) {
+                    popUpTo(AuthGraph.SignIn) {
                         inclusive = false
                     }
                     launchSingleTop = true
@@ -28,9 +28,9 @@ class SignInViewModel : BaseViewModel, ViewModel() {
     fun navigateToSignUp() {
         viewModelScope.launch {
             navigator.navigate(
-                Destination.AuthGraph.SignUp,
+                AuthGraph.SignUp,
                 navOptions = navOptions {
-                    popUpTo(Destination.AuthGraph.SignIn) {
+                    popUpTo(AuthGraph.SignIn) {
                         inclusive = false
                     }
                     launchSingleTop = true

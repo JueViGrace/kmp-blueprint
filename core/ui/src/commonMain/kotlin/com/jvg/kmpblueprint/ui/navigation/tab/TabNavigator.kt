@@ -1,13 +1,14 @@
-package com.jvg.kmpblueprint.ui.navigation
+package com.jvg.kmpblueprint.ui.navigation.tab
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavOptions
+import com.jvg.kmpblueprint.ui.navigation.ActionStack
+import com.jvg.kmpblueprint.ui.navigation.Destination
+import com.jvg.kmpblueprint.ui.navigation.NavigationAction
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 
-interface Navigator {
-    val startDestination: Destination
-        get() = Destination.Root
+interface TabNavigator {
     val navigationActions: Flow<NavigationAction>
     val stateHandle: SavedStateHandle
         get() = SavedStateHandle()
@@ -23,6 +24,6 @@ interface Navigator {
     fun consumeAction(action: NavigationAction)
 
     companion object {
-        val instance: Navigator = NavigatorImpl
+        val instance: TabNavigator = TabNavigatorImpl
     }
 }

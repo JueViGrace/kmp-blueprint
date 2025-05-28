@@ -63,6 +63,7 @@ kotlin {
             implementation(projects.feature.sample1.auth)
 
             // Database
+            implementation(projects.core.database)
             implementation(projects.feature.sample1.database)
 
             // Home
@@ -71,8 +72,17 @@ kotlin {
             // Resources
             implementation(projects.core.resources)
 
+            // Shared
+            implementation(projects.core.shared)
+
+            // Types
+            implementation(projects.core.types)
+
             // UI
             implementation(projects.core.ui)
+
+            // Util
+            implementation(projects.core.util)
 
             /* Dependencies */
 
@@ -92,6 +102,8 @@ kotlin {
             // Koin
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+            implementation(libs.koin.compose.viewmodel.navigation)
 
             // Navigation
             implementation(libs.navigation.compose)
@@ -101,7 +113,7 @@ kotlin {
         }
         desktopMain.dependencies {
             // Compose
-            implementation(compose.desktop.common)
+            implementation(compose.desktop.currentOs)
 
             // Coroutines
             implementation(libs.kotlinx.coroutines.swing)

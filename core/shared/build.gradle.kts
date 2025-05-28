@@ -37,6 +37,9 @@ kotlin {
             // Api
             implementation(projects.core.api)
 
+            // Database
+            implementation(projects.core.database)
+
             // Resources
             implementation(projects.core.resources)
 
@@ -66,6 +69,9 @@ kotlin {
 
             // Koin
             implementation(libs.koin.core)
+
+            // Navigation
+            implementation(libs.navigation.compose)
         }
 
         iosMain.dependencies {}

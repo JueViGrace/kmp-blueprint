@@ -59,6 +59,7 @@ kotlin {
             implementation(projects.feature.sample2.auth)
 
             // Database
+            implementation(projects.core.database)
             implementation(projects.feature.sample2.database)
 
             // Home
@@ -67,8 +68,17 @@ kotlin {
             // Resources
             implementation(projects.core.resources)
 
+            // Shared
+            implementation(projects.core.shared)
+
+            // Types
+            implementation(projects.core.types)
+
             // UI
             implementation(projects.core.ui)
+
+            // Util
+            implementation(projects.core.util)
 
             /* Dependencies */
 

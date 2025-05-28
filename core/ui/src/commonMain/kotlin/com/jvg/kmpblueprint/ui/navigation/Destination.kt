@@ -12,59 +12,77 @@ sealed interface Destination {
 
     @Serializable
     data object Splash : Destination
+}
+
+@Serializable
+sealed interface AuthGraph : Destination {
+    @Serializable
+    data object Graph : AuthGraph
 
     @Serializable
-    sealed interface AuthGraph : Destination {
-        @Serializable
-        data object Graph : AuthGraph
+    data object SignUp : AuthGraph
 
-        @Serializable
-        data object SignUp : AuthGraph
+    @Serializable
+    data object SignIn : AuthGraph
 
-        @Serializable
-        data object SignIn : AuthGraph
+    @Serializable
+    data object ForgotPassword : AuthGraph
+}
 
-        @Serializable
-        data object ForgotPassword : AuthGraph
+@Serializable
+sealed interface HomeGraph : Destination {
+    @Serializable
+    data object Graph : HomeGraph
 
-        @Serializable
-        sealed interface Sample1Graph : AuthGraph {
-            // add app specific destinations for authentication
-        }
+    @Serializable
+    data object Home : HomeGraph
 
+    @Serializable
+    data object Settings : HomeGraph
+
+    @Serializable
+    sealed interface TabGraph : HomeGraph {
         @Serializable
-        sealed interface Sample2Graph : AuthGraph {
-            // add app specific destinations for authentication
-        }
+        data object Graph : TabGraph
+    }
+}
+
+@Serializable
+sealed interface Sample1Graph : Destination {
+    @Serializable
+    sealed interface Auth : Sample1Graph {
+        // add app specific destinations for authentication
     }
 
     @Serializable
-    sealed interface HomeGraph : Destination {
+    sealed interface Home : Sample1Graph {
         @Serializable
-        data object Graph : HomeGraph
-
-        @Serializable
-        data object Home : HomeGraph
-
-        @Serializable
-        data object Settings : HomeGraph
-
-        @Serializable
-        sealed interface Sample1Graph : HomeGraph {
+        sealed interface Tab : Home {
             @Serializable
-            data object Profile : Sample1Graph
+            data object Chats : Tab
 
             @Serializable
-            data object Chats : Sample1Graph
-
-            @Serializable
-            data class Chat(val chatId: String) : Sample1Graph
+            data object Profile : Tab
         }
 
         @Serializable
-        sealed interface Sample2Graph : HomeGraph {
+        data class Chat(val chatId: String) : Sample1Graph
+    }
+}
+
+@Serializable
+sealed interface Sample2Graph : HomeGraph {
+    @Serializable
+    sealed interface Auth : Sample2Graph {
+        // add app specific destinations for authentication
+    }
+
+    @Serializable
+    sealed interface Home : Sample2Graph {
+        @Serializable
+        sealed interface Tab : Home {
             @Serializable
-            data object Profile : Sample2Graph
+            data object Profile : Tab
         }
     }
 }

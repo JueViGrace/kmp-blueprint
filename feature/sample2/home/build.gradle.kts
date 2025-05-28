@@ -20,8 +20,6 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
-    jvm()
-
     sourceSets {
         androidMain.dependencies {
             // Coroutines
@@ -41,6 +39,7 @@ kotlin {
 
             // Database
             implementation(projects.core.database)
+            implementation(projects.feature.sample2.database)
 
             // Home
             implementation(projects.feature.shared.home)
@@ -92,11 +91,6 @@ kotlin {
         }
 
         iosMain.dependencies {}
-
-        jvmMain.dependencies {
-            // Coroutines
-            implementation(libs.kotlinx.coroutines.swing)
-        }
     }
 }
 

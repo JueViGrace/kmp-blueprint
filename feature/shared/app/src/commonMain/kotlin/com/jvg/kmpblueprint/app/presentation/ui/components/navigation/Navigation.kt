@@ -7,13 +7,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.navigation
 import com.jvg.kmpblueprint.ui.components.observable.ObserveAsEvents
 import com.jvg.kmpblueprint.ui.navigation.Destination
-import com.jvg.kmpblueprint.ui.navigation.LocalNavController
-import com.jvg.kmpblueprint.ui.navigation.LocalNavigator
 import com.jvg.kmpblueprint.ui.navigation.NavigationAction
-import com.jvg.kmpblueprint.ui.navigation.Navigator
+import com.jvg.kmpblueprint.ui.navigation.navigator.LocalNavController
+import com.jvg.kmpblueprint.ui.navigation.navigator.LocalNavigator
+import com.jvg.kmpblueprint.ui.navigation.navigator.Navigator
 
 @Composable
 fun Navigation(
+    performAction: (action: NavigationAction) -> Unit = { _ -> },
     routes: NavGraphBuilder.(navigator: Navigator) -> Unit,
 ) {
     val navigator: Navigator = LocalNavigator.current
@@ -24,6 +25,7 @@ fun Navigation(
     ) { action ->
         when (action) {
             is NavigationAction.Navigate -> {
+                performAction(action)
                 navigator.consumeAction(action)
                 navController.navigate(action.destination, navOptions = action.navOptions)
             }

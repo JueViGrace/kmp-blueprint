@@ -46,12 +46,12 @@ interface DbHelper<T> {
     }
 
     suspend fun <R : Any> withDatabase(
-        block: suspend T.() -> R?,
+        block: suspend DbHelper<T>.() -> R?,
     ): R? {
         return withContext(coroutineContext) {
             try {
                 mutex.withLock {
-                    block(db)
+                    block()
                 }
             } catch (e: Exception) {
                 coroutineContext.ensureActive()

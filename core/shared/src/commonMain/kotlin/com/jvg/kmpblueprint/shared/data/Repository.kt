@@ -1,6 +1,8 @@
 package com.jvg.kmpblueprint.shared.data
 
 import com.jvg.kmpblueprint.api.ApiOperation
+import com.jvg.kmpblueprint.api.client.NetworkClient
+import com.jvg.kmpblueprint.database.DbHelper
 import com.jvg.kmpblueprint.types.state.RequestState
 import com.jvg.kmpblueprint.util.Logs
 import kotlinx.coroutines.CoroutineScope
@@ -16,6 +18,16 @@ import kotlin.coroutines.CoroutineContext
 * Standard repository.
 * */
 interface Repository {
+    /*
+     * @property dbHelper Database helper to perform database operations.
+     * */
+    val dbHelper: DbHelper<*>
+
+    /*
+     * @property client Network client to make network requests.
+     * */
+    val client: NetworkClient
+
     /*
      * @property coroutineContext Context used for the coroutines launched in repositories.
      * */
@@ -40,7 +52,11 @@ interface Repository {
             try {
                 block()
             } catch (e: Exception) {
-                Logs.error(tag = this::class.simpleName ?: "Repository", msg = "Start flow error:", tr = e)
+                Logs.error(
+                    tag = this::class.simpleName ?: "Repository",
+                    msg = "Start flow error:",
+                    tr = e
+                )
                 emit(
                     RequestState.Error(
                         error = e,
