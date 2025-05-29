@@ -1,4 +1,3 @@
-rootProject.name = "KMPBlueprint"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -13,9 +12,13 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+
+    // build logic
+    includeBuild("build-logic")
 }
 
 dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google {
             mavenContent {
@@ -28,6 +31,9 @@ dependencyResolutionManagement {
     }
 }
 
+rootProject.name = "KMPBlueprint"
+
+// Applications
 include(
     ":apps:sampleApp1",
     ":apps:sampleApp2",

@@ -1,19 +1,10 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.multiplatform)
+    id("kmp-library")
     alias(libs.plugins.sqldelight)
 }
 
-group = "com.jvg.sample1.database"
-
 kotlin {
-    androidTarget {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_21)
-        }
-    }
+    androidTarget()
 
     iosX64()
     iosArm64()

@@ -1,22 +1,11 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.compose.multiplatform)
-    alias(libs.plugins.compose.compiler)
+    id("compose-multiplatform-library")
 }
-
-group = "com.jvg.kmpblueprint.resources"
 
 // todo: generate resources from gradle.properties or local.properties and add them as a generated resource
 
 kotlin {
-    androidTarget {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_21)
-        }
-    }
+    androidTarget()
 
     iosX64()
     iosArm64()

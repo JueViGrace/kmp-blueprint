@@ -1,5 +1,5 @@
 [versions]
-agp = "8.10.0"
+agp = "8.10.1"
 sampleApp1VersionCode = "1"
 sampleApp1VersionName = "1.0.0"
 sampleApp2VersionCode = "1"
@@ -29,6 +29,13 @@ sqldelight = "2.1.0"
 sqlite = "3.45.3.0"
 
 [libraries]
+######### [GRADLE] #########
+
+gradle-kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradle-android-tools = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+gradle-jetbrains-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-multiplatform" }
+gradle-compose-compiler = { module = "org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin", version.ref = "kotlin" }
+
 ######### [MULTIPLATFORM DEPENDENCIES] #########
 
 # [COROUTINES]
@@ -135,6 +142,7 @@ sqldelight-sqlite-driver = { group = "app.cash.sqldelight", name = "sqlite-drive
 sqlite = { group = "org.xerial", name = "sqlite-jdbc", version.ref = "sqlite" }
 
 [plugins]
+
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
