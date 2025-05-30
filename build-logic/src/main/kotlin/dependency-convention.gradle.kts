@@ -1,0 +1,29 @@
+
+import blueprintbuild.internal.kotlin
+import blueprintbuild.internal.libs
+import blueprintbuild.targets.configureJvm
+
+plugins {
+    id("kmp-convention")
+}
+
+kotlin {
+    sourceSets {
+        androidMain.dependencies {
+            implementation(libs.androidx.core.ktx)
+            implementation(libs.androidx.activity.compose)
+
+            api(libs.kotlinx.coroutines.android)
+        }
+
+        commonMain.dependencies {
+            api(libs.kotlinx.coroutines.core)
+
+            api(libs.kotlinx.datetime)
+
+            implementation(libs.kotlin.reflect)
+        }
+    }
+}
+
+configureJvm()

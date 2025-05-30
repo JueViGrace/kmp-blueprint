@@ -7,9 +7,8 @@ import com.jvg.kmpblueprint.ui.navigation.navigator.Navigator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
-import org.koin.core.component.KoinComponent
 
-interface BaseViewModel : KoinComponent {
+interface BaseViewModel {
     val scope: CoroutineScope
 
     val navigator: Navigator

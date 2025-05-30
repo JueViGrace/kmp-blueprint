@@ -4,65 +4,29 @@ plugins {
 }
 
 kotlin {
-    androidTarget()
-
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+    jvm()
 
     sourceSets {
         androidMain.dependencies {
-            // Coroutines
-            implementation(libs.kotlinx.coroutines.android)
-
-            // Sqldelight
-            implementation(libs.sqldelight.android.driver)
+            // Koin
+            implementation(libs.koin.android)
         }
 
         commonMain.dependencies {
-            /* Projects */
-
             // Database
-            implementation(projects.core.database)
+            api(projects.core.database)
 
             // Util
-            implementation(projects.core.util)
-
-            /* Dependencies */
-
-            // Coroutines
-            implementation(libs.kotlinx.coroutines.core)
+            api(projects.core.util)
 
             // Koin
             implementation(libs.koin.core)
-
-            // Reflect
-            implementation(libs.kotlin.reflect)
-
-            // Sqldelight
-            implementation(libs.sqldelight.async.extensions)
-            implementation(libs.sqldelight.coroutines.extensions)
-        }
-
-        iosMain.dependencies {
-            // Sqldelight
-            implementation(libs.sqldelight.native.driver)
         }
     }
 }
 
 android {
     namespace = "com.jvg.sample2.database"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-
-    defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
 }
 
 sqldelight {

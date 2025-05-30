@@ -1,4 +1,42 @@
+import blueprintbuild.internal.libs
+
 plugins {
-    id("compose-convention")
+    id("kmp-convention")
     id("org.jetbrains.compose")
+    id("org.jetbrains.kotlin.plugin.compose")
+}
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            // Compose
+            implementation(compose.animation)
+            implementation(compose.components.resources)
+            implementation(compose.components.uiToolingPreview)
+            implementation(compose.foundation)
+            implementation(compose.materialIconsExtended)
+            implementation(compose.material3)
+            implementation(compose.runtime)
+            implementation(compose.ui)
+
+            // Coil
+            implementation(libs.coil.compose)
+            implementation(libs.coil.core)
+            implementation(libs.coil.ktor3)
+            implementation(libs.coil.cache)
+
+            // Lifecycle
+            implementation(libs.lifecycle.runtime.compose)
+            implementation(libs.lifecycle.viewmodel)
+            implementation(libs.lifecycle.viewmodel.compose)
+            implementation(libs.lifecycle.viewmodel.savedstate)
+
+            // Navigation
+            implementation(libs.navigation.compose)
+        }
+    }
+}
+
+compose.resources {
+    generateResClass = never
 }

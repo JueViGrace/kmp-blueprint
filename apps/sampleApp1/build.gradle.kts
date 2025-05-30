@@ -5,8 +5,6 @@ plugins {
 }
 
 kotlin {
-    androidTarget()
-
     listOf(
         iosX64(),
         iosArm64(),
@@ -18,148 +16,29 @@ kotlin {
         }
     }
 
-    jvm("desktop")
+    jvm()
 
     sourceSets {
-        val desktopMain by getting
-        androidMain.dependencies {
-            // Android
-            implementation(libs.androidx.core.ktx)
-            implementation(libs.androidx.activity.compose)
-
-            // App update
-            implementation(libs.androidx.app.update)
-            implementation(libs.androidx.app.update.ktx)
-
-            // Coroutines
-            implementation(libs.kotlinx.coroutines.android)
-
-            // Koin
-            implementation(libs.koin.android)
-            implementation(libs.koin.androidx.compose)
-        }
         commonMain.dependencies {
-            /* Projects */
-
-            // Api
-            implementation(projects.core.api)
-
-            // App
-            implementation(projects.feature.shared.app)
-
             // Auth
             implementation(projects.feature.sample1.auth)
 
             // Database
-            implementation(projects.core.database)
             implementation(projects.feature.sample1.database)
 
             // Home
             implementation(projects.feature.sample1.home)
-
-            // Resources
-            implementation(projects.core.resources)
-
-            // Shared
-            implementation(projects.core.shared)
-
-            // Types
-            implementation(projects.core.types)
-
-            // UI
-            implementation(projects.core.ui)
-
-            // Util
-            implementation(projects.core.util)
-
-            /* Dependencies */
-
-            // Compose
-            implementation(compose.animation)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation(compose.foundation)
-            implementation(compose.materialIconsExtended)
-            implementation(compose.material3)
-            implementation(compose.runtime)
-            implementation(compose.ui)
-
-            // Coroutines
-            implementation(libs.kotlinx.coroutines.core)
-
-            // Koin
-            implementation(libs.koin.core)
-            implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
-            implementation(libs.koin.compose.viewmodel.navigation)
-
-            // Navigation
-            implementation(libs.navigation.compose)
-
-            // Reflect
-            implementation(libs.kotlin.reflect)
-        }
-        desktopMain.dependencies {
-            // Compose
-            implementation(compose.desktop.currentOs)
-
-            // Coroutines
-            implementation(libs.kotlinx.coroutines.swing)
         }
     }
 }
 
 android {
     namespace = "com.jvg.sample1"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.jvg.sample1"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = libs.versions.sampleApp1VersionCode.get().toInt()
         versionName = libs.versions.sampleApp1VersionName.get()
-
-        vectorDrawables {
-            useSupportLibrary = true
-        }
-    }
-    packaging {
-        resources.excludes += "DebugProbesKt.bin"
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            isDebuggable = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-            buildConfigField("Boolean", "IS_DEBUG", "false")
-        }
-        debug {
-            isMinifyEnabled = false
-            isShrinkResources = false
-            isDebuggable = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-            buildConfigField("Boolean", "IS_DEBUG", "true")
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
-
-    buildFeatures {
-        compose = true
-        buildConfig = true
     }
 }
 
@@ -174,10 +53,6 @@ compose {
                 packageVersion = libs.versions.sampleApp1VersionName.get()
             }
         }
-    }
-
-    resources {
-        generateResClass = never
     }
 }
 

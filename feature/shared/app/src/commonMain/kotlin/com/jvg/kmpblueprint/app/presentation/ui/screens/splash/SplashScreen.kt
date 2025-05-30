@@ -17,9 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
-import com.jvg.kmpblueprint.resources.resources.generated.resources.Res
-import com.jvg.kmpblueprint.resources.resources.generated.resources.logo
 import com.jvg.kmpblueprint.ui.components.display.ImageComponent
+import com.jvg.resources.generated.resources.Res
+import com.jvg.resources.generated.resources.logo
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

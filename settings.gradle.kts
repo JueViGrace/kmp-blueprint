@@ -1,4 +1,5 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 
 pluginManagement {
     repositories {
@@ -12,9 +13,6 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
-
-    // build logic
-    includeBuild("build-logic")
 }
 
 dependencyResolutionManagement {
@@ -32,6 +30,9 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "KMPBlueprint"
+
+// build logic
+includeBuild("build-logic")
 
 // Applications
 include(
