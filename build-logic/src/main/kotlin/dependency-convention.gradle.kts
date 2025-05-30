@@ -1,7 +1,6 @@
-
 import blueprintbuild.internal.kotlin
 import blueprintbuild.internal.libs
-import blueprintbuild.targets.configureJvm
+import blueprintbuild.targets.hasTarget
 
 plugins {
     id("kmp-convention")
@@ -23,7 +22,13 @@ kotlin {
 
             implementation(libs.kotlin.reflect)
         }
+
+        iosMain.dependencies {}
+
+        hasTarget("jvm") {
+            jvmMain.dependencies {
+                api(libs.kotlinx.coroutines.swing)
+            }
+        }
     }
 }
-
-configureJvm()

@@ -18,3 +18,7 @@ Home:
 State:
 
 - maybe create an error enum to check for error types and handle them differently.
+
+Other:
+
+- set proguard-rules to libraries

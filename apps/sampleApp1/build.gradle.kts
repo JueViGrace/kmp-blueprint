@@ -5,6 +5,8 @@ plugins {
 }
 
 kotlin {
+    androidTarget()
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -21,13 +23,13 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             // Auth
-            implementation(projects.feature.sample1.auth)
+            implementation(projects.feature.sample1.sample1Auth)
 
             // Database
-            implementation(projects.feature.sample1.database)
+            implementation(projects.feature.sample1.sample1Database)
 
             // Home
-            implementation(projects.feature.sample1.home)
+            implementation(projects.feature.sample1.sample1Home)
         }
     }
 }

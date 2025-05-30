@@ -23,29 +23,12 @@ kotlin {
             // Koin
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+            implementation(libs.koin.androidx.compose.navigation)
         }
 
         commonMain.dependencies {
-            // Api
-            api(project(":core:api"))
-
             // App
-            api(project(":feature:shared:app"))
-
-            // Resources
-            api(project(":core:resources"))
-
-            // Shared
-            api(project(":core:shared"))
-
-            // Types
-            api(project(":core:types"))
-
-            // UI
-            api(project(":core:ui"))
-
-            // Util
-            api(project(":core:util"))
+            implementation(project(":feature:shared:kmpBlueprint-app"))
 
             // Koin
             implementation(libs.koin.core)

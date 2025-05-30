@@ -42,34 +42,34 @@ include(
 
 // core library
 include(
-    ":core:api",
-    ":core:database",
-    ":core:resources",
-    ":core:shared",
-    ":core:types",
-    ":core:ui",
-    ":core:util",
+    ":core:kmpBlueprint-api",
+    ":core:kmpBlueprint-database",
+    ":core:kmpBlueprint-resources",
+    ":core:kmpBlueprint-shared",
+    ":core:kmpBlueprint-types",
+    ":core:kmpBlueprint-ui",
+    ":core:kmpBlueprint-util",
 )
 
 // feature library
 
 // shared features
 include(
-    ":feature:shared:app",
-    ":feature:shared:auth",
-    ":feature:shared:home",
+    ":feature:shared:kmpBlueprint-app",
+    ":feature:shared:kmpBlueprint-auth",
+    ":feature:shared:kmpBlueprint-home",
 )
 
 // Sample1 features
 include(
-    ":feature:sample1:auth",
-    ":feature:sample1:database",
-    ":feature:sample1:home",
+    ":feature:sample1:sample1-auth",
+    ":feature:sample1:sample1-database",
+    ":feature:sample1:sample1-home",
 )
 
 // Sample2 features
 include(
-    ":feature:sample2:auth",
-    ":feature:sample2:database",
-    ":feature:sample2:home",
+    ":feature:sample2:sample2-auth",
+    ":feature:sample2:sample2-database",
+    ":feature:sample2:sample2-home",
 )
