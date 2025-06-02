@@ -39,7 +39,3 @@ android {
         versionName = libs.versions.sampleApp2VersionName.get()
     }
 }
-
-dependencies {
-    debugImplementation(compose.uiTooling)
-}

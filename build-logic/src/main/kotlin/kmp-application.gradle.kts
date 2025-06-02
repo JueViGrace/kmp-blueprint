@@ -8,12 +8,6 @@ plugins {
 }
 
 kotlin {
-    androidTarget()
-
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
     sourceSets {
         androidMain.dependencies {
             // App update
@@ -44,6 +38,10 @@ kotlin {
             }
         }
     }
+}
+
+dependencies {
+    debugImplementation(compose.uiTooling)
 }
 
 android {

@@ -40,7 +40,7 @@ actual fun HomeScaffold(
                                 text = stringResource(currentTab.title),
                                 style = Fonts.extraLargeTextStyle,
                             )
-                        }
+                        },
                     )
                 }
 

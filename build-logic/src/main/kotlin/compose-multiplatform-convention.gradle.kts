@@ -11,12 +11,15 @@ kotlin {
         commonMain.dependencies {
             // Compose
             implementation(compose.animation)
+            implementation(compose.animationGraphics)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(compose.foundation)
             implementation(compose.materialIconsExtended)
             implementation(compose.material3)
+            implementation(compose.preview)
             implementation(compose.runtime)
+            implementation(compose.runtimeSaveable)
             implementation(compose.ui)
 
             // Coil

@@ -57,7 +57,3 @@ compose {
         }
     }
 }
-
-dependencies {
-    debugImplementation(compose.uiTooling)
-}
