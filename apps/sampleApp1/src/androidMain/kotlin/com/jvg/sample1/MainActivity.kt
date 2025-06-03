@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.jvg.kmpblueprint.app.presentation.ui.components.AppContainer
+import com.jvg.kmpblueprint.ui.components.containers.AppContainer
 import com.jvg.sample1.app.presentation.ui.screen.App
 
 class MainActivity : ComponentActivity() {

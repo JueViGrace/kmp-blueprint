@@ -1,6 +1,6 @@
 package com.jvg.sample1.app.di
 
-import com.jvg.kmpblueprint.api.client.NetworkClient
+import com.jvg.kmpblueprint.api.client.base.NetworkClient
 import com.jvg.kmpblueprint.api.client.ktor.KtorClientImpl
 import com.jvg.sample1.app.data.AppRepository
 import com.jvg.sample1.app.data.DefaultAppRepository

@@ -22,7 +22,7 @@ kotlin {
 
         commonMain.dependencies {
             // App
-            implementation(project(":feature:shared:kmpBlueprint-app"))
+            implementation(project(":shared:feature:feature-app"))
 
             // Koin
             implementation(libs.koin.core)

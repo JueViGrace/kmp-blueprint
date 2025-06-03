@@ -23,13 +23,13 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             // Auth
-            implementation(projects.feature.sample1.sample1Auth)
+            implementation(projects.sample1.feature.sample1Auth)
 
             // Database
-            implementation(projects.feature.sample1.sample1Database)
+            implementation(projects.sample1.database.sample1Database)
 
             // Home
-            implementation(projects.feature.sample1.sample1Home)
+            implementation(projects.sample1.feature.sample1Home)
         }
     }
 }

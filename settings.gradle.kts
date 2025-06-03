@@ -42,34 +42,48 @@ include(
 
 // core library
 include(
-    ":core:kmpBlueprint-api",
-    ":core:kmpBlueprint-database",
-    ":core:kmpBlueprint-resources",
-    ":core:kmpBlueprint-shared",
-    ":core:kmpBlueprint-types",
-    ":core:kmpBlueprint-ui",
-    ":core:kmpBlueprint-util",
+    ":core:api",
+    ":core:database",
+    ":core:resources",
+    ":core:shared",
+    ":core:types",
+    ":core:ui",
+    ":core:util",
 )
 
-// feature library
+/*
+* Shared library
+*/
 
 // shared features
 include(
-    ":feature:shared:kmpBlueprint-app",
-    ":feature:shared:kmpBlueprint-auth",
-    ":feature:shared:kmpBlueprint-home",
+    ":shared:feature:feature-app",
+    ":shared:feature:feature-auth",
+    ":shared:feature:feature-home",
 )
 
-// Sample1 features
+// shared
 include(
-    ":feature:sample1:sample1-auth",
-    ":feature:sample1:sample1-database",
-    ":feature:sample1:sample1-home",
+    ":shared:network:network-auth",
+    ":shared:network:network-home",
 )
 
-// Sample2 features
+/*
+* Sample1 library
+*/
+
 include(
-    ":feature:sample2:sample2-auth",
-    ":feature:sample2:sample2-database",
-    ":feature:sample2:sample2-home",
+    ":sample1:database:sample1-database",
+    ":sample1:feature:sample1-auth",
+    ":sample1:feature:sample1-home",
+)
+
+/*
+* Sample2 library
+*/
+
+include(
+    ":sample2:database:sample2-database",
+    ":sample2:feature:sample2-auth",
+    ":sample2:feature:sample2-home",
 )

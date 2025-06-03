@@ -15,6 +15,7 @@ androidx-lifecycle = "2.9.0"
 androidx-navigation-compose = "2.9.0"
 androidx-work = "2.10.1"
 coil = "3.2.0"
+compose-hot-reload = "1.0.0-alpha10"
 compose-multiplatform = "1.8.1"
 google-location = "21.3.0"
 kotlin = "2.1.21"
@@ -146,6 +147,7 @@ sqlite = { group = "org.xerial", name = "sqlite-jdbc", version.ref = "sqlite" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+compose-hot-reload = { id = "org.jetbrains.compose.hot-reload", version.ref = "compose-hot-reload" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

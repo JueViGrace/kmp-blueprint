@@ -1,6 +1,6 @@
 package com.jvg.sample2.app.data
 
-import com.jvg.kmpblueprint.api.client.NetworkClient
+import com.jvg.kmpblueprint.api.client.base.NetworkClient
 import com.jvg.kmpblueprint.app.data.SharedAppRepository
 import com.jvg.kmpblueprint.database.DbHelper
 import com.jvg.kmpblueprint.types.auth.Session
