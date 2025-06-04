@@ -1,8 +1,7 @@
 package com.jvg.sample1.app.data
 
-import com.jvg.kmpblueprint.api.client.base.NetworkClient
 import com.jvg.kmpblueprint.app.data.SharedAppRepository
-import com.jvg.kmpblueprint.database.DbHelper
+import com.jvg.kmpblueprint.database.helper.DbHelper
 import com.jvg.kmpblueprint.types.auth.Session
 import com.jvg.kmpblueprint.types.state.RequestState
 import com.jvg.sample1.database.Sample1DB
@@ -13,8 +12,7 @@ interface AppRepository : SharedAppRepository {
 }
 
 class DefaultAppRepository(
-    override val dbHelper: DbHelper<Sample1DB>,
-    override val client: NetworkClient
+    private val dbHelper: DbHelper<Sample1DB>,
 ) : AppRepository {
     override val session: Flow<RequestState<Session>> = startFlow {
         val session: Session = dbHelper.withDatabase {

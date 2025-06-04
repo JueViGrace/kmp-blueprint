@@ -14,7 +14,7 @@ kotlin {
     sourceSets {
         androidMain.dependencies {
             // Sqldelight
-            api(libs.sqldelight.android.driver)
+            implementation(libs.sqldelight.android.driver)
         }
 
         commonMain.dependencies {
@@ -22,18 +22,18 @@ kotlin {
             api(projects.core.util)
 
             // Sqldelight
-            api(libs.sqldelight.async.extensions)
-            api(libs.sqldelight.coroutines.extensions)
+            implementation(libs.sqldelight.async.extensions)
+            implementation(libs.sqldelight.coroutines.extensions)
         }
 
         iosMain.dependencies {
             // Sqldelight
-            api(libs.sqldelight.native.driver)
+            implementation(libs.sqldelight.native.driver)
         }
 
         jvmMain.dependencies {
             // Sqldelight
-            api(libs.sqldelight.sqlite.driver)
+            implementation(libs.sqldelight.sqlite.driver)
 
             // Sqlite
             implementation(libs.sqlite)

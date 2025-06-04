@@ -30,6 +30,9 @@ kotlin {
 
             // Home
             implementation(projects.sample1.feature.sample1Home)
+
+            // Network
+            implementation(projects.sample1.network.sample1Network)
         }
     }
 }

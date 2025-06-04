@@ -8,7 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.jvg.kmpblueprint.auth.presentation.signin.viewmodel.SignInViewModel
+import com.jvg.sample1.auth.presentation.ui.signin.viewmodel.SignInViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable

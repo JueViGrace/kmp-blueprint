@@ -26,6 +26,9 @@ kotlin {
 
             // Home
             implementation(projects.sample2.feature.sample2Home)
+
+            // Network
+            implementation(projects.sample2.network.sample2Network)
         }
     }
 }

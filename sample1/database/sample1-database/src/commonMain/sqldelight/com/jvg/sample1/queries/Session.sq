@@ -11,12 +11,6 @@ INSERT OR REPLACE INTO s1_session(
     active
 ) VALUES ?;
 
-updateToken:
-UPDATE s1_session SET
-    access_token = :access_token,
-    refresh_token = :refresh_token
-WHERE id = :id;
-
 updateActive:
 UPDATE s1_session SET
     active = :active

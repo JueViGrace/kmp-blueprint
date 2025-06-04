@@ -13,6 +13,9 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            // Network
+            implementation(projects.shared.network.networkAuth)
+
             // Shared
             api(projects.core.shared)
         }

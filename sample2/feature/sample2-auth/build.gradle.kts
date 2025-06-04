@@ -19,16 +19,22 @@ kotlin {
 
         commonMain.dependencies {
             // Auth
-            api(projects.shared.feature.featureAuth)
+            implementation(projects.shared.feature.featureAuth)
 
             // Database
-            api(projects.sample2.database.sample2Database)
+            implementation(projects.sample2.database.sample2Database)
 
             // Koin
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.koin.compose.viewmodel.navigation)
+
+            // Network
+            implementation(projects.sample2.network.sample2Network)
+
+            // Types
+            implementation(projects.sample2.types.sample2Types)
         }
     }
 }

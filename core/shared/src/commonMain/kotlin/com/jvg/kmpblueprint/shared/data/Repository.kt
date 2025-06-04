@@ -1,8 +1,6 @@
 package com.jvg.kmpblueprint.shared.data
 
-import com.jvg.kmpblueprint.api.client.base.NetworkClient
-import com.jvg.kmpblueprint.api.model.ApiOperation
-import com.jvg.kmpblueprint.database.DbHelper
+import com.jvg.kmpblueprint.network.model.ApiOperation
 import com.jvg.kmpblueprint.types.state.RequestState
 import com.jvg.kmpblueprint.util.Logs
 import kotlinx.coroutines.CoroutineScope
@@ -18,16 +16,6 @@ import kotlin.coroutines.CoroutineContext
 * Standard repository.
 * */
 interface Repository {
-    /*
-     * @property dbHelper Database helper to perform database operations.
-     * */
-    val dbHelper: DbHelper<*>
-
-    /*
-     * @property client Network client to make network requests.
-     * */
-    val client: NetworkClient
-
     /*
      * @property coroutineContext Context used for the coroutines launched in repositories.
      * */

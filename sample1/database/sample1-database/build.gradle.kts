@@ -24,6 +24,10 @@ kotlin {
 
             // Koin
             implementation(libs.koin.core)
+
+            // Sqldelight
+            implementation(libs.sqldelight.async.extensions)
+            implementation(libs.sqldelight.coroutines.extensions)
         }
     }
 }

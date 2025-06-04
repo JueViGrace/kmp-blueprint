@@ -14,7 +14,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             // Api
-            api(projects.core.api)
+            api(projects.core.network)
 
             // Database
             api(projects.core.database)

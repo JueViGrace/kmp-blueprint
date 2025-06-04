@@ -8,12 +8,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.jvg.kmpblueprint.auth.presentation.forgot.viewmodel.ForgotPasswordViewModel
+import com.jvg.kmpblueprint.auth.presentation.forgot.viewmodel.SharedForgotPasswordViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun ForgotPasswordScreen() {
-    val viewmodel: ForgotPasswordViewModel = koinViewModel()
+    val viewmodel: SharedForgotPasswordViewModel = koinViewModel()
 
     Column(
         modifier = Modifier.fillMaxSize(),
