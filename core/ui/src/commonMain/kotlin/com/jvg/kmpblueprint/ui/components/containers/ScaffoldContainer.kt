@@ -1,4 +1,4 @@
-package com.jvg.kmpblueprint.ui.components.layout
+package com.jvg.kmpblueprint.ui.components.containers
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -24,13 +24,19 @@ typealias ScaffoldType = @Composable (
 ) -> Unit
 
 @Composable
-fun ScaffoldContainer(
+expect fun ScaffoldContainer(
     scaffold: ScaffoldType = { snackbarHost, content ->
         DefaultScaffoldComponent(
             snackbarHost = snackbarHost,
             content = content
         )
     },
+    content: @Composable () -> Unit
+)
+
+@Composable
+internal fun ScaffoldContent(
+    scaffold: ScaffoldType,
     content: @Composable () -> Unit
 ) {
     val messages: Messages = LocalMessages.current

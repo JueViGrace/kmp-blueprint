@@ -1,1 +1,33 @@
 -keep @kotlinx.serialization.Serializable class * { *; }
+
+# If the following rules are not set the project cannot be built
+
+-dontwarn com.jvg.kmpblueprint.app.data.SharedAppRepository$DefaultImpls
+-dontwarn com.jvg.kmpblueprint.app.data.SharedAppRepository
+-dontwarn com.jvg.kmpblueprint.app.presentation.ui.components.navigation.NavigationKt
+-dontwarn com.jvg.kmpblueprint.app.presentation.ui.screens.splash.SplashScreenKt
+-dontwarn com.jvg.kmpblueprint.app.presentation.viewModel.SharedAppViewModel
+-dontwarn com.jvg.kmpblueprint.database.helper.DbHelper
+-dontwarn com.jvg.kmpblueprint.resources.generated.resources.Drawable0_commonMainKt
+-dontwarn com.jvg.kmpblueprint.resources.generated.resources.Res$drawable
+-dontwarn com.jvg.kmpblueprint.types.auth.Session$Companion
+-dontwarn com.jvg.kmpblueprint.types.auth.Session
+-dontwarn com.jvg.kmpblueprint.types.state.RequestState$Error
+-dontwarn com.jvg.kmpblueprint.types.state.RequestState$Success
+-dontwarn com.jvg.kmpblueprint.types.state.RequestState
+-dontwarn com.jvg.kmpblueprint.ui.components.containers.AppContainerKt
+-dontwarn com.jvg.kmpblueprint.ui.navigation.AuthGraph$SignIn
+-dontwarn com.jvg.kmpblueprint.ui.navigation.Destination$Splash
+-dontwarn com.jvg.kmpblueprint.ui.navigation.Destination
+-dontwarn com.jvg.kmpblueprint.ui.navigation.HomeGraph$Home
+-dontwarn com.jvg.kmpblueprint.ui.navigation.NavigationAction$Navigate
+-dontwarn com.jvg.kmpblueprint.ui.navigation.NavigationAction
+-dontwarn com.jvg.kmpblueprint.ui.navigation.navigator.Navigator
+-dontwarn com.jvg.sample1.auth.di.AuthModuleKt
+-dontwarn com.jvg.sample1.auth.presentation.ui.components.navigation.graph.AuthGraphKt
+-dontwarn com.jvg.sample1.database.Sample1DB
+-dontwarn com.jvg.sample1.database.di.DatabaseModuleKt
+-dontwarn com.jvg.sample1.home.di.HomeModuleKt
+-dontwarn com.jvg.sample1.home.presentation.ui.components.navigation.graph.HomeGraphKt
+-dontwarn com.jvg.sample1.network.di.NetworkModuleKt
+-dontwarn com.jvg.sample1.queries.SessionQueries

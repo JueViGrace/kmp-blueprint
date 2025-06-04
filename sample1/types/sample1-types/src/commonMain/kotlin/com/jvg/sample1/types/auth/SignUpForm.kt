@@ -2,14 +2,14 @@ package com.jvg.sample1.types.auth
 
 import com.jvg.sample1.network.auth.dto.SignUpDto
 
-data class SignUp(
-    val firstName: String,
-    val lastName: String,
-    val username: String,
+data class SignUpForm(
+    val firstName: String = "",
+    val lastName: String = "",
+    val username: String = "",
     val alias: String = "",
-    val email: String,
-    val password: String,
-    val phoneNumber: String,
+    val email: String = "",
+    val password: String = "",
+    val phoneNumber: String = "",
 ) {
     fun toDto(): SignUpDto {
         return SignUpDto(

@@ -21,9 +21,6 @@ kotlin {
         }
 
         commonMain.dependencies {
-            // App
-            implementation(project(":shared:feature:feature-app"))
-
             // Koin
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
@@ -68,10 +65,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             isDebuggable = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+
             buildConfigField("Boolean", "IS_DEBUG", "false")
         }
 
@@ -79,10 +73,7 @@ android {
             isMinifyEnabled = false
             isShrinkResources = false
             isDebuggable = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+
             buildConfigField("Boolean", "IS_DEBUG", "true")
         }
     }

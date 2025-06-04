@@ -22,6 +22,9 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            // App
+            implementation(projects.shared.feature.featureApp)
+
             // Auth
             implementation(projects.sample1.feature.sample1Auth)
 
@@ -44,6 +47,15 @@ android {
         applicationId = "com.jvg.sample1"
         versionCode = libs.versions.sampleApp1VersionCode.get().toInt()
         versionName = libs.versions.sampleApp1VersionName.get()
+    }
+
+    buildTypes {
+        all {
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
     }
 }
 
