@@ -36,7 +36,7 @@ kotlin {
             implementation(libs.sqldelight.sqlite.driver)
 
             // Sqlite
-            implementation(libs.sqlite)
+            api(libs.sqlite)
         }
     }
 }

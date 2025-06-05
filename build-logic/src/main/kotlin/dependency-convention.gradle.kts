@@ -28,6 +28,8 @@ kotlin {
         hasTarget("jvm") {
             jvmMain.dependencies {
                 api(libs.kotlinx.coroutines.swing)
+
+                api(libs.logback.classic)
             }
         }
     }

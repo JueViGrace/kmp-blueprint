@@ -58,6 +58,10 @@
     <string name="open_link">Abrir enlace</string>
     <string name="update">Actualizar</string>
     <string name="profile">Perfil</string>
+    <string name="type_your">Escribe tu</string>
+    <string name="your">Tu</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="password">Contraseña</string>
     <!--Error Messages-->
     <string name="not_available">No disponible</string>
     <string name="authenticate_first">Necesitas autenticarte primero</string>
@@ -67,6 +71,20 @@
     <string name="checking_session">Comprobando sesión</string>
     <string name="no_session_found">No se encontró ninguna sesión</string>
     <string name="failed_to_start_session">Error al iniciar sesión</string>
+    <string name="first_name_empty">Nombre no puede estar vacío</string>
+    <string name="last_name_empty">Apellido no puede estar vacío</string>
+    <string name="email_empty">Email no puede estar vacío</string>
+    <string name="email_invalid_format">Formato de email no válido</string>
+    <string name="email_too_long">Email demasiado largo</string>
+    <string name="email_used">Este email ya está siendo utilizado</string>
+    <string name="username_empty">El nombre de usuario no puede estar vacío</string>
+    <string name="username_used">Este nombre de usuario ya está siendo utilizado</string>
+    <string name="password_empty">La contraseña no puede estar vacía</string>
+    <string name="phone_number_empty">Teléfono no puede estar vacío</string>
+    <string name="phone_number_invalid">Teléfono no válido</string>
+    <string name="phone_number_used">Teléfono ya está siendo utilizado</string>
+    <string name="terms_and_conditions_not_accepted">Debe aceptar los términos y condiciones para continuar</string>
+    <string name="privacy_policy_not_accepted">Debe aceptar la política de privacidad para continuar</string>
     <!--HTTP Status Messages-->
     <string name="bad_request">Petición invalida</string>
     <string name="unauthorized">No estás autorizado para realizar esta acción</string>

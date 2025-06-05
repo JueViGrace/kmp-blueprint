@@ -1,5 +1,4 @@
 import blueprintbuild.internal.libs
-import blueprintbuild.targets.hasTarget
 
 plugins {
     id("dependency-convention")
@@ -26,13 +25,6 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.koin.compose.viewmodel.navigation)
-        }
-
-        hasTarget("jvm") {
-            jvmMain.dependencies {
-                // Compose
-                implementation(compose.desktop.currentOs)
-            }
         }
     }
 }

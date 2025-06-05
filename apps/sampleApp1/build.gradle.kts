@@ -18,9 +18,10 @@ kotlin {
         }
     }
 
-    jvm()
+    jvm("desktop")
 
     sourceSets {
+        val desktopMain by getting
         commonMain.dependencies {
             // App
             implementation(projects.shared.feature.featureApp)
@@ -36,6 +37,18 @@ kotlin {
 
             // Network
             implementation(projects.sample1.network.sample1Network)
+        }
+
+        desktopMain.dependencies {
+            // Compose
+            implementation(compose.desktop.currentOs)
+            implementation(compose.desktop.common)
+
+            // Coroutines
+            implementation(libs.kotlinx.coroutines.swing)
+
+            // Logs
+            implementation(libs.logback.classic)
         }
     }
 }
@@ -62,7 +75,7 @@ android {
 compose {
     desktop {
         application {
-            mainClass = "com.jvg.sample1.ApplicationKt"
+            mainClass = "com.jvg.sample1.Mainkt"
 
             nativeDistributions {
                 targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)

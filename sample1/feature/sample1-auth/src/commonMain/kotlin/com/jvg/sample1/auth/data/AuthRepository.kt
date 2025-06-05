@@ -8,7 +8,7 @@ import com.jvg.sample1.database.auth.AuthHelper
 import com.jvg.sample1.network.auth.AuthClient
 import com.jvg.sample1.network.auth.dto.ConfirmPasswordResetDto
 import com.jvg.sample1.network.auth.dto.RequestPasswordResetDto
-import com.jvg.sample1.types.auth.LogIn
+import com.jvg.sample1.types.auth.LogInForm
 import com.jvg.sample1.types.auth.PasswordReset
 import com.jvg.sample1.types.auth.SignUpForm
 import com.jvg.sample1.types.auth.mappers.toDbSession
@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 interface AuthRepository : SharedAuthRepository {
     fun confirmPasswordReset(code: String): Flow<RequestState<Boolean>>
-    fun login(logIn: LogIn): Flow<RequestState<Boolean>>
+    fun login(logInForm: LogInForm): Flow<RequestState<Boolean>>
     fun requestPasswordReset(username: String): Flow<RequestState<Boolean>>
     fun resetPassword(reset: PasswordReset): Flow<RequestState<Boolean>>
     fun signUp(signUpForm: SignUpForm): Flow<RequestState<Boolean>>
@@ -42,10 +42,10 @@ class DefaultAuthRepository(
         }
     }
 
-    override fun login(logIn: LogIn): Flow<RequestState<Boolean>> {
+    override fun login(logInForm: LogInForm): Flow<RequestState<Boolean>> {
         return startNetworkRequest(
             call = {
-                authClient.login(logIn.toDto())
+                authClient.login(logInForm.toDto())
             }
         ) { value ->
             scope.launch {

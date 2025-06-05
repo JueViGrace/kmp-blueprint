@@ -9,6 +9,7 @@ UI:
 - make actual implementation of method getScreenOrientation in WindowUtilsImpl.ios.kt.
 - a scaffold internal state might be needed if there's a single scaffold in the apps.
 - create a screen to catch breaking errors.
+- make function to change size of icons depending on screen size.
 
 Home:
 

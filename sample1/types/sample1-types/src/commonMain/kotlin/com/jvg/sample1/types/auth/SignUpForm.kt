@@ -10,6 +10,8 @@ data class SignUpForm(
     val email: String = "",
     val password: String = "",
     val phoneNumber: String = "",
+    val termsAndConditions: Boolean = false,
+    val privacyPolicy: Boolean = false,
 ) {
     fun toDto(): SignUpDto {
         return SignUpDto(

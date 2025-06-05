@@ -61,6 +61,13 @@
     <string name="update">Update</string>
     <string name="profile">Profile</string>
     <string name="chats" translatable="false">Chats</string>
+    <string name="type_your">Type your</string>
+    <string name="your">Your</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="go_to_sign_up">Go to sign up</string>
+    <string name="not_have_account">Don't have an account? Sign in</string>
+    <string name="forgot_password">Forgot password</string>
     <!--Error Messages-->
     <string name="not_available">Not available</string>
     <string name="authenticate_first">You need to authenticate first</string>
@@ -70,6 +77,20 @@
     <string name="checking_session">Checking session</string>
     <string name="no_session_found">No session found</string>
     <string name="failed_to_start_session">Failed to start session</string>
+    <string name="first_name_empty">First name cannot be empty</string>
+    <string name="last_name_empty">Last name cannot be empty</string>
+    <string name="email_empty">Email cannot be empty</string>
+    <string name="email_invalid_format">Invalid email format</string>
+    <string name="email_too_long">Email too long</string>
+    <string name="email_used">This email is already being used</string>
+    <string name="username_empty">Username cannot be empty</string>
+    <string name="username_used">This username is already being used</string>
+    <string name="password_empty">Password cannot be empty</string>
+    <string name="phone_number_empty">Phone number cannot be empty</string>
+    <string name="phone_number_invalid">Invalid phone number</string>
+    <string name="phone_number_used">This phone number is already being used</string>
+    <string name="terms_and_conditions_not_accepted">You must accept the terms and conditions to continue</string>
+    <string name="privacy_policy_not_accepted">You must accept the privacy policy to continue</string>
     <!--HTTP Status Messages-->
     <string name="bad_request">Invalid request</string>
     <string name="unauthorized">You are not authorized to perform this action</string>
