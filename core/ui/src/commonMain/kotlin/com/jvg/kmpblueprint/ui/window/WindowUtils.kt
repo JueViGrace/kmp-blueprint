@@ -70,6 +70,11 @@ interface WindowUtils {
         return getScreenOrientation() == Orientation.Portrait
     }
 
+    @Composable
+    fun isLandscape(): Boolean {
+        return getScreenOrientation() == Orientation.Landscape
+    }
+
     companion object {
         val instance: WindowUtils = WindowUtilsImpl
     }
