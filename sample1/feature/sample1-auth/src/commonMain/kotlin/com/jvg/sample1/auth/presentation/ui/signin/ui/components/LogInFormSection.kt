@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,6 +19,7 @@ import com.jvg.kmpblueprint.resources.generated.resources.Res
 import com.jvg.kmpblueprint.resources.generated.resources.forgot_password
 import com.jvg.kmpblueprint.resources.generated.resources.ic_lock
 import com.jvg.kmpblueprint.resources.generated.resources.ic_user
+import com.jvg.kmpblueprint.resources.generated.resources.log_in
 import com.jvg.kmpblueprint.resources.generated.resources.password
 import com.jvg.kmpblueprint.resources.generated.resources.type_your
 import com.jvg.kmpblueprint.resources.generated.resources.username
@@ -38,10 +41,15 @@ fun LogInFormSection(
     onEvent: (SignInEvents) -> Unit
 ) {
     val windowUtils: WindowUtils = LocalWindowUtils.current
+    val maxSizeModifier = if (windowUtils.getScreenSize() == ScreenSize.Compact) {
+        Modifier.fillMaxWidth(0.8f)
+    } else {
+        Modifier.widthIn(min = 200.dp, max = 350.dp)
+    }
 
     Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically),
+        modifier = modifier.then(maxSizeModifier),
+        verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.Top),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val username = stringResource(Res.string.username)
@@ -78,11 +86,7 @@ fun LogInFormSection(
             )
 
             Row(
-                modifier = if (windowUtils.getScreenSize() == ScreenSize.Compact) {
-                    Modifier.fillMaxWidth(0.8f)
-                } else {
-                    Modifier.width(350.dp)
-                },
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.End,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
@@ -95,6 +99,41 @@ fun LogInFormSection(
                     color = MaterialTheme.colorScheme.primary,
                     textDecoration = TextDecoration.Underline
                 )
+            }
+        }
+
+        Column(
+            verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            OutlinedButton(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {
+                    onEvent(SignInEvents.OnSubmit)
+                },
+                enabled = state.submitEnabled && !state.submitLoading,
+            ) {
+                if (state.submitLoading) {
+                    CircularProgressIndicator()
+                } else {
+                    TextComponent(
+                        text = stringResource(Res.string.log_in),
+                    )
+                }
+            }
+
+            state.submitError?.let { error ->
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    TextComponent(
+                        text = error,
+                        style = Fonts.smallTextStyle,
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
             }
         }
     }

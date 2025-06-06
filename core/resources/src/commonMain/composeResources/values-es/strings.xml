@@ -62,6 +62,9 @@
     <string name="your">Tu</string>
     <string name="username">Nombre de usuario</string>
     <string name="password">Contraseña</string>
+    <string name="go_to_sign_up">Ir al registro</string>
+    <string name="not_have_account">¿No tienes una cuenta? Regístrate</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
     <!--Error Messages-->
     <string name="not_available">No disponible</string>
     <string name="authenticate_first">Necesitas autenticarte primero</string>

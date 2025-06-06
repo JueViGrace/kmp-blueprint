@@ -19,7 +19,7 @@ class DefaultAppRepository(
             executeOne(db.sessionQueries.findSession(mapper = Session::mapToSession))
         } ?: return@startFlow emit(
             RequestState.Error(
-                error = Exception("Session not found")
+                error = "Session not found"
             )
         )
 

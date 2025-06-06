@@ -23,7 +23,7 @@ fun ElevatedCardContainer(
     leadingContent: @Composable (() -> Unit)? = null,
     trailingContent: @Composable (() -> Unit)? = null,
     contentPadding: PaddingValues = PaddingValues(),
-    horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
+    horizontalArrangement: Arrangement.Horizontal = Arrangement.SpaceEvenly,
     content: @Composable () -> Unit
 ) {
     ElevatedCard(
@@ -56,7 +56,7 @@ fun ElevatedCardContainer(
     leadingContent: @Composable (() -> Unit)? = null,
     trailingContent: @Composable (() -> Unit)? = null,
     contentPadding: PaddingValues = PaddingValues(),
-    horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
+    horizontalArrangement: Arrangement.Horizontal = Arrangement.SpaceEvenly,
     content: @Composable () -> Unit
 ) {
     ElevatedCard(

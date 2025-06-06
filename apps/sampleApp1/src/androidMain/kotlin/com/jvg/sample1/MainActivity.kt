@@ -1,5 +1,6 @@
 package com.jvg.sample1
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,5 +25,9 @@ class MainActivity : ComponentActivity() {
                 App()
             }
         }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
     }
 }

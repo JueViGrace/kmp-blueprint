@@ -8,7 +8,7 @@ import com.jvg.kmpblueprint.ui.window.ScreenSize
 import com.jvg.kmpblueprint.ui.window.WindowUtils
 
 object Fonts {
-    val windowUtils: WindowUtils = WindowUtils.instance
+    private val windowUtils: WindowUtils = WindowUtils.instance
 
     val extraLargeTextStyle: TextStyle
         @Composable

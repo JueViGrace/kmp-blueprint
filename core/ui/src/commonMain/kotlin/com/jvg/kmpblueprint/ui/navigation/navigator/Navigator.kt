@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 
 interface Navigator {
     val startDestination: Destination
-        get() = Destination.Root
+        get() = Destination.Splash
     val navigationActions: Flow<NavigationAction>
     val stateHandle: SavedStateHandle
         get() = SavedStateHandle()

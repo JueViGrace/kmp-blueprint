@@ -47,7 +47,7 @@ interface Repository {
                 )
                 emit(
                     RequestState.Error(
-                        error = e,
+                        error = e.message,
                     ),
                 )
             }
@@ -91,7 +91,7 @@ interface Repository {
             is ApiOperation.Failure -> {
                 onError(
                     RequestState.Error(
-                        error = call.exception
+                        error = call.exception.message
                     )
                 )
             }
@@ -100,7 +100,7 @@ interface Repository {
                 val data: T = call.value.data
                     ?: return onError(
                         RequestState.Error(
-                            error = Exception("Data is null")
+                            error = "Data is null"
                         )
                     )
                 onSuccess(data)

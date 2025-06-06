@@ -5,7 +5,7 @@ package com.jvg.kmpblueprint.types.state
 * */
 sealed interface RequestState<out T> {
     data class Success<T>(val data: T) : RequestState<T>
-    data class Error(val error: Exception) : RequestState<Nothing>
+    data class Error(val error: String?) : RequestState<Nothing>
     data object Loading : RequestState<Nothing>
     data object Idle : RequestState<Nothing>
 }

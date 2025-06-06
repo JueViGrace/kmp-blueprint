@@ -5,7 +5,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
@@ -26,7 +25,7 @@ fun CardContainer(
     leadingContent: @Composable (() -> Unit)? = null,
     trailingContent: @Composable (() -> Unit)? = null,
     contentPadding: PaddingValues = PaddingValues(),
-    horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
+    horizontalArrangement: Arrangement.Horizontal = Arrangement.SpaceEvenly,
     content: @Composable () -> Unit
 ) {
     Card(
@@ -37,7 +36,7 @@ fun CardContainer(
         shape = shape
     ) {
         Row(
-            modifier = Modifier.fillMaxSize().padding(contentPadding),
+            modifier = Modifier.padding(contentPadding),
             horizontalArrangement = horizontalArrangement,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -61,7 +60,7 @@ fun CardContainer(
     leadingContent: @Composable (() -> Unit)? = null,
     trailingContent: @Composable (() -> Unit)? = null,
     contentPadding: PaddingValues = PaddingValues(),
-    horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
+    horizontalArrangement: Arrangement.Horizontal = Arrangement.SpaceEvenly,
     content: @Composable () -> Unit
 ) {
     Card(
@@ -75,7 +74,7 @@ fun CardContainer(
         interactionSource = interactionSource,
     ) {
         Row(
-            modifier = Modifier.fillMaxSize().padding(contentPadding),
+            modifier = Modifier.padding(contentPadding),
             horizontalArrangement = horizontalArrangement,
             verticalAlignment = Alignment.CenterVertically
         ) {

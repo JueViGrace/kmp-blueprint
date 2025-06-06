@@ -7,7 +7,6 @@ import com.jvg.kmpblueprint.auth.data.SharedAuthRepository
 import com.jvg.kmpblueprint.shared.presentation.viewmodel.BaseViewModel
 import com.jvg.kmpblueprint.ui.navigation.AuthGraph
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 abstract class SharedSignInViewModel(
     protected open val repository: SharedAuthRepository,
@@ -15,30 +14,26 @@ abstract class SharedSignInViewModel(
     override val scope: CoroutineScope = viewModelScope
 
     fun navigateToForgotPassword() {
-        viewModelScope.launch {
-            navigator.navigate(
-                AuthGraph.ForgotPassword,
-                navOptions = navOptions {
-                    popUpTo(AuthGraph.SignIn) {
-                        inclusive = false
-                    }
-                    launchSingleTop = true
+        navigateTo(
+            destination = AuthGraph.ForgotPassword,
+            navOptions = navOptions {
+                popUpTo(AuthGraph.SignIn) {
+                    inclusive = false
                 }
-            )
-        }
+                launchSingleTop = true
+            }
+        )
     }
 
     fun navigateToSignUp() {
-        viewModelScope.launch {
-            navigator.navigate(
-                AuthGraph.SignUp,
-                navOptions = navOptions {
-                    popUpTo(AuthGraph.SignIn) {
-                        inclusive = false
-                    }
-                    launchSingleTop = true
+        navigateTo(
+            destination = AuthGraph.SignUp,
+            navOptions = navOptions {
+                popUpTo(AuthGraph.SignIn) {
+                    inclusive = false
                 }
-            )
-        }
+                launchSingleTop = true
+            }
+        )
     }
 }

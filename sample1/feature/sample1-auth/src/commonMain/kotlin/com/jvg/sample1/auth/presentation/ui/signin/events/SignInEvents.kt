@@ -11,4 +11,5 @@ sealed interface SignInEvents {
 
     /* Actions */
     data object OnSubmit : SignInEvents
+    data object ClearError : SignInEvents
 }

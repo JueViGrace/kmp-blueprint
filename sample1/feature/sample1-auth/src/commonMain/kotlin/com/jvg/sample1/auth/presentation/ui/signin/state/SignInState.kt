@@ -7,11 +7,8 @@ data class SignInState(
     val logInForm: LogInForm = LogInForm(),
     val formValidation: LoginValidation = LoginValidation(),
 
-    val shouldShowUsernameError: Boolean = false,
-    val shouldShowPasswordError: Boolean = false,
-
     val submitLoading: Boolean = false,
 
     val submitError: String? = null,
-    val submitEnabled: Boolean = formValidation.valid(),
+    val submitEnabled: Boolean = false,
 )

@@ -4,9 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.navigation
 import com.jvg.kmpblueprint.ui.components.observable.ObserveAsEvents
-import com.jvg.kmpblueprint.ui.navigation.Destination
 import com.jvg.kmpblueprint.ui.navigation.NavigationAction
 import com.jvg.kmpblueprint.ui.navigation.navigator.LocalNavController
 import com.jvg.kmpblueprint.ui.navigation.navigator.LocalNavigator
@@ -19,6 +17,18 @@ fun Navigation(
 ) {
     val navigator: Navigator = LocalNavigator.current
     val navController: NavHostController = LocalNavController.current
+
+    ObserveAsEvents(
+        flow = navController.currentBackStackEntryFlow,
+    ) {
+        println(it)
+    }
+
+    ObserveAsEvents(
+        flow = navController.currentBackStack,
+    ) {
+        println(it)
+    }
 
     ObserveAsEvents(
         flow = navigator.navigationActions,
@@ -41,10 +51,6 @@ fun Navigation(
         navController = navController,
         startDestination = navigator.startDestination,
     ) {
-        navigation<Destination.Root>(
-            startDestination = Destination.Splash,
-        ) {
-            routes(navigator)
-        }
+        routes(navigator)
     }
 }

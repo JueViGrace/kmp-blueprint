@@ -22,11 +22,11 @@ fun App() {
 
     Navigation(
         performAction = { action ->
-            if (action is NavigationAction.Navigate && action.destination is AuthGraph.SignIn) {
+            if (action is NavigationAction.Navigate && action.destination is AuthGraph.Graph) {
                 viewModel.endSession()
             }
         },
-    ) { navigator ->
+    ) { _ ->
         composable<Destination.Splash> { _ ->
             LaunchedEffect(Unit) {
                 viewModel.checkSession()

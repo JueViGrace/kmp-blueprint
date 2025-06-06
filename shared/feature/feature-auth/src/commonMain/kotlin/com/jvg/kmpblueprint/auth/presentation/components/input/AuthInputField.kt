@@ -4,7 +4,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
@@ -20,9 +19,6 @@ import androidx.compose.ui.unit.dp
 import com.jvg.kmpblueprint.ui.Fonts
 import com.jvg.kmpblueprint.ui.components.display.IconComponent
 import com.jvg.kmpblueprint.ui.components.display.TextComponent
-import com.jvg.kmpblueprint.ui.window.LocalWindowUtils
-import com.jvg.kmpblueprint.ui.window.ScreenSize
-import com.jvg.kmpblueprint.ui.window.WindowUtils
 
 @Composable
 fun AuthInputField(
@@ -46,17 +42,8 @@ fun AuthInputField(
     shape: Shape = OutlinedTextFieldDefaults.shape,
     colors: TextFieldColors = OutlinedTextFieldDefaults.colors(),
 ) {
-    val windowUtils: WindowUtils = LocalWindowUtils.current
-    val containerModifier = if (windowUtils.getScreenSize() == ScreenSize.Compact) {
-        Modifier.fillMaxWidth(0.8f)
-    } else {
-        Modifier.widthIn(min = 200.dp, max = 350.dp)
-    }
-
     Column(
-        modifier = Modifier
-            .then(containerModifier)
-            .then(modifier),
+        modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
         horizontalAlignment = Alignment.Start,
     ) {
@@ -95,7 +82,7 @@ fun AuthInputField(
                 {
                     TextComponent(
                         text = label,
-                        style = Fonts.labelTextStyle,
+                        style = Fonts.smallTextStyle,
                     )
                 }
             },

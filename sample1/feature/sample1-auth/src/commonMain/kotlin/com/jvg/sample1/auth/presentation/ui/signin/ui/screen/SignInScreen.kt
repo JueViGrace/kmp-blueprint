@@ -2,6 +2,7 @@ package com.jvg.sample1.auth.presentation.ui.signin.ui.screen
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -19,6 +20,13 @@ fun SignInScreen(
     viewmodel: SignInViewModel = koinViewModel()
 ) {
     val state: SignInState by viewmodel.state.collectAsStateWithLifecycle()
+
+    LaunchedEffect(state.submitError) {
+        if (state.submitError != null) {
+            viewmodel.onEvent(SignInEvents.ClearError)
+        }
+    }
+
     SignInContent(
         state = state,
         onEvent = viewmodel::onEvent

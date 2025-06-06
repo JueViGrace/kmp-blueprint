@@ -37,6 +37,9 @@ kotlin {
 
             // Network
             implementation(projects.sample1.network.sample1Network)
+
+            // Types
+            implementation(projects.sample1.types.sample1Types)
         }
 
         desktopMain.dependencies {
