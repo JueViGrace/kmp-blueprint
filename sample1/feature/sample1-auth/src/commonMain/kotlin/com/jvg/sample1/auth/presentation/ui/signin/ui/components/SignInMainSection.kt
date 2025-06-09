@@ -13,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.jvg.kmpblueprint.auth.presentation.components.GoToSignInCard
 import com.jvg.kmpblueprint.resources.generated.resources.Res
 import com.jvg.kmpblueprint.resources.generated.resources.compose_multiplatform
 import com.jvg.kmpblueprint.resources.generated.resources.logo
@@ -31,8 +30,8 @@ fun SignInMainSection(
     modifier: Modifier = Modifier,
     state: SignInState,
     onEvent: (SignInEvents) -> Unit,
-
-    ) {
+    footer: (@Composable () -> Unit)? = null,
+) {
     val windowUtils: WindowUtils = LocalWindowUtils.current
 
     LazyColumn(
@@ -93,13 +92,10 @@ fun SignInMainSection(
             }
         }
 
-        item {
-            GoToSignInCard(
-                modifier = Modifier.padding(vertical = 16.dp, horizontal = 8.dp),
-                onClick = {
-                    onEvent(SignInEvents.OnSignUp)
-                }
-            )
+        footer?.let {
+            item {
+                it()
+            }
         }
     }
 }
