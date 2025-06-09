@@ -15,12 +15,13 @@ import io.ktor.client.plugins.observer.ResponseObserver
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-/*
-* Ktor client JVM implementation.
-* @param baseUrl Base url for the client.
-* */
+/**
+ * Ktor client JVM implementation.
+ * @param baseUrl Base url for the client.
+ * */
 actual class KtorClientImpl actual constructor(
     actual override val baseUrl: String,
+    actual override val prefix: String,
 ) : KtorClient {
     actual override fun client(baseUrl: String?): HttpClient {
         return HttpClient(OkHttp) {

@@ -19,18 +19,6 @@ fun Navigation(
     val navController: NavHostController = LocalNavController.current
 
     ObserveAsEvents(
-        flow = navController.currentBackStackEntryFlow,
-    ) {
-        println(it)
-    }
-
-    ObserveAsEvents(
-        flow = navController.currentBackStack,
-    ) {
-        println(it)
-    }
-
-    ObserveAsEvents(
         flow = navigator.navigationActions,
     ) { action ->
         when (action) {

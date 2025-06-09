@@ -2,6 +2,8 @@ package com.jvg.sample1.network.auth
 
 import com.jvg.kmpblueprint.network.auth.SharedAuthClient
 import com.jvg.kmpblueprint.network.client.base.NetworkClient
+import com.jvg.kmpblueprint.network.client.base.get
+import com.jvg.kmpblueprint.network.client.base.post
 import com.jvg.kmpblueprint.network.model.ApiOperation
 import com.jvg.sample1.network.auth.dto.ConfirmPasswordResetDto
 import com.jvg.sample1.network.auth.dto.LogInDto

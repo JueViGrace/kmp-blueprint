@@ -1,11 +1,14 @@
 package com.jvg.kmpblueprint.network.client.base
 
+import com.jvg.kmpblueprint.network.client.base.NetworkClient.Companion.DEFAULT_CONTENT_TYPE
 import com.jvg.kmpblueprint.network.model.ApiOperation
 import com.jvg.kmpblueprint.network.model.NetworkRequestMethod
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.serializer
 import kotlin.coroutines.CoroutineContext
 
 /*
@@ -13,6 +16,8 @@ import kotlin.coroutines.CoroutineContext
 * */
 interface NetworkClient {
     val baseUrl: String
+    val prefix: String
+        get() = ""
 
     // You can remove this properties if you don't need them
     val coroutineContext: CoroutineContext
@@ -29,133 +34,15 @@ interface NetworkClient {
      * @param headers Request headers.
      * @param contentType Request content type.
      * */
-    suspend fun <T, R> call(
+    suspend fun <T : Any> call(
         method: NetworkRequestMethod,
         baseUrl: String?,
         urlString: String,
-        body: T? = null,
+        body: Any? = null,
         headers: Map<String, String>,
         contentType: String,
-    ): ApiOperation<R>
-
-    /*
-     * Makes a GET request.
-     * @param baseUrl Base url for the request.
-     * @param urlString Complete path for the request.
-     * @param headers Request headers.
-     * @param contentType Request content type.
-     * */
-    suspend fun <T> get(
-        baseUrl: String? = null,
-        urlString: String,
-        headers: Map<String, String> = emptyMap(),
-        contentType: String = DEFAULT_CONTENT_TYPE,
-    ): ApiOperation<T> {
-        return call(
-            method = NetworkRequestMethod.GET,
-            baseUrl = baseUrl,
-            urlString = urlString,
-            body = null,
-            headers = headers,
-            contentType = contentType,
-        )
-    }
-
-    /*
-     * Makes a POST request.
-     * @param baseUrl Base url for the request.
-     * @param urlString Complete path for the request.
-     * @param headers Request headers.
-     * @param contentType Request content type.
-     * */
-    suspend fun <T, R> post(
-        baseUrl: String? = null,
-        urlString: String,
-        body: T? = null,
-        headers: Map<String, String> = emptyMap(),
-        contentType: String = DEFAULT_CONTENT_TYPE,
-    ): ApiOperation<R> {
-        return call(
-            method = NetworkRequestMethod.POST,
-            baseUrl = baseUrl,
-            urlString = urlString,
-            body = body,
-            headers = headers,
-            contentType = contentType,
-        )
-    }
-
-    /*
-     * Makes a PUT request.
-     * @param baseUrl Base url for the request.
-     * @param urlString Complete path for the request.
-     * @param headers Request headers.
-     * @param contentType Request content type.
-     * */
-    suspend fun <T, R> put(
-        baseUrl: String? = null,
-        urlString: String,
-        body: T? = null,
-        headers: Map<String, String> = emptyMap(),
-        contentType: String = DEFAULT_CONTENT_TYPE,
-    ): ApiOperation<R> {
-        return call(
-            method = NetworkRequestMethod.PUT,
-            baseUrl = baseUrl,
-            urlString = urlString,
-            body = body,
-            headers = headers,
-            contentType = contentType,
-        )
-    }
-
-    /*
-     * Makes a DELETE request.
-     * @param baseUrl Base url for the request.
-     * @param urlString Complete path for the request.
-     * @param headers Request headers.
-     * @param contentType Request content type.
-     * */
-    suspend fun <T, R> delete(
-        baseUrl: String? = null,
-        urlString: String,
-        body: T? = null,
-        headers: Map<String, String> = emptyMap(),
-        contentType: String = DEFAULT_CONTENT_TYPE,
-    ): ApiOperation<R> {
-        return call(
-            method = NetworkRequestMethod.DELETE,
-            baseUrl = baseUrl,
-            urlString = urlString,
-            body = body,
-            headers = headers,
-            contentType = contentType,
-        )
-    }
-
-    /*
-     * Makes a PATCH request.
-     * @param baseUrl Base url for the request.
-     * @param urlString Complete path for the request.
-     * @param headers Request headers.
-     * @param contentType Request content type.
-     * */
-    suspend fun <T, R> patch(
-        baseUrl: String? = null,
-        urlString: String,
-        body: T? = null,
-        headers: Map<String, String> = emptyMap(),
-        contentType: String = DEFAULT_CONTENT_TYPE,
-    ): ApiOperation<R> {
-        return call(
-            method = NetworkRequestMethod.PATCH,
-            baseUrl = baseUrl,
-            urlString = urlString,
-            body = body,
-            headers = headers,
-            contentType = contentType,
-        )
-    }
+        serializer: KSerializer<T>,
+    ): ApiOperation<T>
 
     companion object {
         /*
@@ -163,4 +50,128 @@ interface NetworkClient {
          * */
         const val DEFAULT_CONTENT_TYPE = "application/json"
     }
+}
+
+/*
+ * Makes a GET request.
+ * @param baseUrl Base url for the request.
+ * @param urlString Complete path for the request.
+ * @param headers Request headers.
+ * @param contentType Request content type.
+ * */
+suspend inline fun <reified T : Any> NetworkClient.get(
+    baseUrl: String? = null,
+    urlString: String,
+    headers: Map<String, String> = emptyMap(),
+    contentType: String = DEFAULT_CONTENT_TYPE,
+): ApiOperation<T> {
+    return call(
+        method = NetworkRequestMethod.GET,
+        baseUrl = baseUrl,
+        urlString = urlString,
+        body = null,
+        headers = headers,
+        contentType = contentType,
+        serializer = serializer<T>()
+    )
+}
+
+/*
+ * Makes a POST request.
+ * @param baseUrl Base url for the request.
+ * @param urlString Complete path for the request.
+ * @param headers Request headers.
+ * @param contentType Request content type.
+ * */
+suspend inline fun <reified T : Any> NetworkClient.post(
+    baseUrl: String? = null,
+    urlString: String,
+    body: Any? = null,
+    headers: Map<String, String> = emptyMap(),
+    contentType: String = DEFAULT_CONTENT_TYPE,
+): ApiOperation<T> {
+    return call(
+        method = NetworkRequestMethod.POST,
+        baseUrl = baseUrl,
+        urlString = urlString,
+        body = body,
+        headers = headers,
+        contentType = contentType,
+        serializer = serializer<T>()
+    )
+}
+
+/*
+ * Makes a PUT request.
+ * @param baseUrl Base url for the request.
+ * @param urlString Complete path for the request.
+ * @param headers Request headers.
+ * @param contentType Request content type.
+ * */
+suspend inline fun <reified T : Any> NetworkClient.put(
+    baseUrl: String? = null,
+    urlString: String,
+    body: Any? = null,
+    headers: Map<String, String> = emptyMap(),
+    contentType: String = DEFAULT_CONTENT_TYPE,
+): ApiOperation<T> {
+    return call(
+        method = NetworkRequestMethod.PUT,
+        baseUrl = baseUrl,
+        urlString = urlString,
+        body = body,
+        headers = headers,
+        contentType = contentType,
+        serializer = serializer<T>()
+    )
+}
+
+/*
+ * Makes a DELETE request.
+ * @param baseUrl Base url for the request.
+ * @param urlString Complete path for the request.
+ * @param headers Request headers.
+ * @param contentType Request content type.
+ * */
+suspend inline fun <reified T : Any> NetworkClient.delete(
+    baseUrl: String? = null,
+    urlString: String,
+    body: Any? = null,
+    headers: Map<String, String> = emptyMap(),
+    contentType: String = DEFAULT_CONTENT_TYPE,
+): ApiOperation<T> {
+    return call(
+        method = NetworkRequestMethod.DELETE,
+        baseUrl = baseUrl,
+        urlString = urlString,
+        body = body,
+        headers = headers,
+        contentType = contentType,
+        serializer = serializer<T>()
+    )
+}
+
+/*
+ * Makes a PATCH request.
+ * @param baseUrl Base url for the request.
+ * @param urlString Complete path for the request.
+ * @param headers Request headers.
+ * @param contentType Request content type.
+ * */
+suspend inline fun <reified T : Any> NetworkClient.patch(
+    baseUrl: String? = null,
+    urlString: String,
+    body: Any? = null,
+    headers: Map<String, String> = emptyMap(),
+    contentType: String = DEFAULT_CONTENT_TYPE,
+): ApiOperation<T> {
+    return call(
+        method = NetworkRequestMethod.PATCH,
+        baseUrl = baseUrl,
+        urlString = urlString,
+        body = body,
+        headers = headers,
+        contentType = contentType,
+        serializer = serializer<T>()
+    )
 }

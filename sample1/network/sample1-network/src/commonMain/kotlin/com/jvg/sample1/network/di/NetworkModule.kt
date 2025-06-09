@@ -8,7 +8,8 @@ import org.koin.dsl.module
 fun networkModule(): Module = module {
     single<NetworkClient> {
         KtorClientImpl(
-            baseUrl = "http://192.168.0.100:5000/api"
+            baseUrl = "http://192.168.0.235:5000",
+            prefix = "api",
         )
     }
 }

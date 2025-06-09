@@ -5,17 +5,20 @@ import com.jvg.kmpblueprint.network.model.ApiOperation
 import com.jvg.kmpblueprint.network.model.ApiResponse
 import com.jvg.kmpblueprint.network.model.NetworkRequestMethod
 import com.jvg.kmpblueprint.network.model.getKtorHttpMethod
+import com.jvg.kmpblueprint.util.Logs
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
 import io.ktor.client.request.headers
 import io.ktor.client.request.request
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import io.ktor.http.URLBuilder
 import io.ktor.http.contentType
 import io.ktor.http.path
 import kotlinx.coroutines.ensureActive
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.json.Json
 
 /*
 * Default ktor client interface.
@@ -42,19 +45,20 @@ interface KtorClient : NetworkClient {
      * @param headers Request headers.
      * @param contentType Request content type.
      * */
-    override suspend fun <T, R> call(
+    override suspend fun <T : Any> call(
         method: NetworkRequestMethod,
         baseUrl: String?,
         urlString: String,
-        body: T?,
+        body: Any?,
         headers: Map<String, String>,
-        contentType: String
-    ): ApiOperation<R> {
+        contentType: String,
+        serializer: KSerializer<T>,
+    ): ApiOperation<T> {
         return try {
             val response: HttpResponse = client(baseUrl).request {
                 this.method = getKtorHttpMethod(method)
                 url {
-                    setUrl(urlString = urlString)
+                    setUrl(prefix = prefix, urlString = urlString)
                 }
                 contentType(ContentType.parse(contentType))
                 headers.forEach { (key, value) ->
@@ -66,9 +70,21 @@ interface KtorClient : NetworkClient {
                     setBody(body)
                 }
             }
-            val body: ApiResponse<R> = response.body()
-            ApiOperation.Success(body)
+
+            val apiResponseSerializer: KSerializer<ApiResponse<T>> =
+                ApiResponse.serializer(serializer)
+
+            val body: String = response.bodyAsText()
+
+            val responseBody: ApiResponse<T> = Json.decodeFromString(apiResponseSerializer, body)
+
+            ApiOperation.Success(responseBody)
         } catch (e: Exception) {
+            Logs.error(
+                tag = this::class.simpleName ?: "KtorClient",
+                msg = "Error while making request",
+                tr = e
+            )
             coroutineContext.ensureActive()
             ApiOperation.Failure(e)
         }
@@ -83,9 +99,11 @@ interface KtorClient : NetworkClient {
         /*
          * Extension function to set the URL for this client
          * */
-        fun URLBuilder.setUrl(urlString: String) {
-            if (urlString.contains("?")) {
-                val path: List<String> = urlString.split("?")
+        fun URLBuilder.setUrl(prefix: String = "", urlString: String) {
+            val url = formatUrl(prefix = prefix, urlString = urlString)
+
+            if (url.contains("?")) {
+                val path: List<String> = url.split("?")
 
                 path(path[0])
                 var pair: List<String>
@@ -99,8 +117,33 @@ interface KtorClient : NetworkClient {
                     parameters.append(pair[0], pair[1])
                 }
             } else {
-                path(urlString)
+                path(url)
             }
+        }
+
+        @Throws(IllegalArgumentException::class)
+        private fun formatUrl(prefix: String = "", urlString: String): String {
+            require(urlString.isNotEmpty())
+
+            var url = ""
+
+            if (prefix.isNotEmpty()) {
+                url += if (prefix.startsWith("/")) {
+                    prefix
+                } else {
+                    "/$prefix"
+                }
+            }
+
+            val path = if (urlString.startsWith("/")) {
+                urlString
+            } else {
+                "/$urlString"
+            }
+
+            url += path
+
+            return url
         }
     }
 }

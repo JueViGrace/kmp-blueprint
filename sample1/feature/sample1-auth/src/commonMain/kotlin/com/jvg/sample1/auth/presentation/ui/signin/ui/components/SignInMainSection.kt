@@ -31,7 +31,8 @@ fun SignInMainSection(
     modifier: Modifier = Modifier,
     state: SignInState,
     onEvent: (SignInEvents) -> Unit,
-) {
+
+    ) {
     val windowUtils: WindowUtils = LocalWindowUtils.current
 
     LazyColumn(

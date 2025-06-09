@@ -77,7 +77,7 @@ class SignInViewModel(
 
     private fun clearError() {
         viewModelScope.launch {
-            delay(2500)
+            delay(5000)
             _state.update { state ->
                 state.copy(
                     submitError = null

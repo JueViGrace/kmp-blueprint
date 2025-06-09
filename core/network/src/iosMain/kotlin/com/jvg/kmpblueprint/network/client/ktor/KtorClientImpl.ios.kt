@@ -21,6 +21,7 @@ import kotlinx.serialization.json.Json
 * */
 actual class KtorClientImpl actual constructor(
     actual override val baseUrl: String,
+    actual override val prefix: String,
 ) : KtorClient {
     actual override fun client(baseUrl: String?): HttpClient {
         return HttpClient(Darwin) {

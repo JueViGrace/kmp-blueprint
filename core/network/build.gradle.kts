@@ -33,6 +33,8 @@ kotlin {
             implementation(libs.ktor.client.logging)
             implementation(libs.ktor.serialization.kotlinx.json)
 
+            implementation(libs.kotlin.reflect)
+
             // Serialization
             api(libs.kotlinx.serialization.json)
         }
